@@ -9,12 +9,10 @@ const config: CodegenConfig = {
         'typescript-operations',
         'typescript',
         'typescript-react-apollo',
-        'typescript-graphql-request',
       ],
     },
   },
   overwrite: true,
   schema: 'http://localhost:9000/api/graphql',
 };
-
 export default config;

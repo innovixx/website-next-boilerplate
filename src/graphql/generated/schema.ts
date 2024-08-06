@@ -6,6 +6,12 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
+export type ContentBlockFragmentFragment = { __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null };
+
+export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, image: { __typename?: 'Media', id?: string | null, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } };
+
+export type MediaFieldFragmentFragment = { __typename?: 'Media', id?: string | null, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null };
+
 export type PagesQueryVariables = Exact<{
   where?: InputMaybe<Page_Where>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4895,7 +4901,59 @@ export type UserResetPassword = {
   user?: Maybe<User>;
 };
 
-
+export const ContentBlockFragmentFragmentDoc = gql`
+    fragment ContentBlockFragment on Content {
+  content
+  id
+  blockName
+  blockType
+}
+    `;
+export const MediaFieldFragmentFragmentDoc = gql`
+    fragment MediaFieldFragment on Media {
+  id
+  alt
+  updatedAt
+  createdAt
+  url
+  filename
+  mimeType
+  filesize
+  width
+  height
+  focalX
+  focalY
+  sizes {
+    card {
+      url
+      width
+      height
+      mimeType
+      filesize
+      filename
+    }
+    feature {
+      url
+      width
+      height
+      mimeType
+      filesize
+      filename
+    }
+  }
+}
+    `;
+export const ImageBlockFragmentFragmentDoc = gql`
+    fragment ImageBlockFragment on Image {
+  image {
+    ...MediaFieldFragment
+  }
+  caption
+  id
+  blockName
+  blockType
+}
+    ${MediaFieldFragmentFragmentDoc}`;
 export const PagesDocument = gql`
     query Pages($where: Page_where, $limit: Int, $page: Int, $sort: String) {
   Pages(where: $where, limit: $limit, page: $page, sort: $sort) {
@@ -4903,82 +4961,11 @@ export const PagesDocument = gql`
       id
       title
       image {
-        id
-        alt
-        updatedAt
-        createdAt
-        url
-        filename
-        mimeType
-        filesize
-        width
-        height
-        focalX
-        focalY
-        sizes {
-          card {
-            url
-            width
-            height
-            mimeType
-            filesize
-            filename
-          }
-          feature {
-            url
-            width
-            height
-            mimeType
-            filesize
-            filename
-          }
-        }
+        ...MediaFieldFragment
       }
       layout {
-        ... on Content {
-          content
-          id
-          blockName
-          blockType
-        }
-        ... on Image {
-          image {
-            id
-            alt
-            updatedAt
-            createdAt
-            url
-            filename
-            mimeType
-            filesize
-            width
-            height
-            focalX
-            focalY
-            sizes {
-              card {
-                url
-                width
-                height
-                mimeType
-                filesize
-                filename
-              }
-              feature {
-                url
-                width
-                height
-                mimeType
-                filesize
-                filename
-              }
-            }
-          }
-          caption
-          id
-          blockName
-          blockType
-        }
+        ...ContentBlockFragment
+        ...ImageBlockFragment
       }
       meta {
         title
@@ -4990,7 +4977,9 @@ export const PagesDocument = gql`
     }
   }
 }
-    `;
+    ${MediaFieldFragmentFragmentDoc}
+${ContentBlockFragmentFragmentDoc}
+${ImageBlockFragmentFragmentDoc}`;
 
 /**
  * __usePagesQuery__

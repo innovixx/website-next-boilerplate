@@ -1,9 +1,9 @@
 import React from 'react';
 import NextImage from 'next/image';
 import { sizes } from './sizes';
-import { Image } from '../../graphql/generated/schema';
+import { ImageBlockFragmentFragment } from '../../graphql/generated/schema';
 
-export const ImageComponent: React.FC<Image> = ({
+export const ImageComponent: React.FC<ImageBlockFragmentFragment> = ({
   image,
 }) => {
   if (typeof image === 'object' && image.sizes) {

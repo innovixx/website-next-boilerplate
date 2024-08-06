@@ -22,7 +22,8 @@
   },
   "exclude": [
     "node_modules",
-    "tsconfig.codegen.json"
+    "tsconfig.codegen.json",
+    "./src/graphql/generated/schema.ts"
   ],
   "include": [
     "next-env.d.ts",

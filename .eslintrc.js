@@ -4,5 +4,5 @@ module.exports = {
     '@innovixx/eslint-config/configs/typescript',
     '@innovixx/eslint-config/configs/react',
   ],
-  ignorePatterns: ['src/lib/types.ts'],
+  ignorePatterns: ['src/graphql/generated/schema.ts'],
 };

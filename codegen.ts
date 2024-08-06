@@ -9,6 +9,7 @@ const config: CodegenConfig = {
         'typescript-operations',
         'typescript',
         'typescript-react-apollo',
+        'typescript-graphql-request',
       ],
     },
   },

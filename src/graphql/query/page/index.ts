@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const PAGE = gql`
+export const PAGES = gql`
     query Pages($where: Page_where, $limit: Int, $page: Int, $sort: String) {
     Pages(where: $where, limit: $limit, page: $page, sort: $sort) {
       docs {

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+  },
   images: {
     domains: [
       new URL(process.env.NEXT_PUBLIC_SERVER_URL).hostname,

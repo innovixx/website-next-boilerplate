@@ -28,5 +28,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "src/pages/index.tsx",
   ]
 }

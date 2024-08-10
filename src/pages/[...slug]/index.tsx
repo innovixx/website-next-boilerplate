@@ -44,8 +44,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   });
 
-  console.log(data)
-
   if (!data?.Pages?.docs?.length) {
     ctx.res.statusCode = 404;
 

@@ -12,7 +12,8 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "orsenkucher.vscode-graphql"
+        "orsenkucher.vscode-graphql",
+        "stylelint.vscode-stylelint"
       ]
     }
   },

@@ -19,7 +19,9 @@ const Home: React.FC<Props> = ({
 
   return (
     <div>
-      <h1>{page.title}</h1>
+      <h1>
+        {page.title}
+      </h1>
       <RenderBlocks
         layout={page.layout || []}
       />

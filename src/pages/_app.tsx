@@ -7,11 +7,9 @@ import {
   InMemoryCache,
   createHttpLink,
 } from '@apollo/client';
-import { globalStyles } from '../styles';
+import '../styles/index.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  globalStyles();
-
   const apiUri = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`;
 
   const httpLink = createHttpLink({

@@ -1,0 +1,7 @@
+@use '../partials/variables' as *;
+
+$multiplier: 1;
+
+@function base($multiplier: 1) {
+  @return ($baselinePX / $htmlFontSize) * $multiplier * 1rem;
+}

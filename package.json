@@ -7,13 +7,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "stylelint && next dev",
     "build": "next build",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint-staged": "lint-staged --verbose",
-    "prepare": "husky"
+    "stylelint": "stylelint 'src/styles/**/*.scss'"
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",
@@ -25,13 +25,10 @@
     "escape-html": "^1.0.3",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
-    "jss": "^10.10.0",
-    "jss-global": "^3.0.0",
     "lexical": "^0.17.0",
     "next": "^14.2.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-jss": "^10.10.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.16.4",
@@ -60,6 +57,10 @@
     "husky": "^9.1.5",
     "lint-staged": "^14.0.1",
     "nodemon": "^3.1.4",
+    "sass": "^1.79.4",
+    "stylelint": "^16.9.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-scss": "^6.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },

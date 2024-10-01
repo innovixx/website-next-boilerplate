@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "stylelint && next dev",
-    "build": "next build",
+    "build": "stylelint && next build",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",

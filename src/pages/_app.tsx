@@ -8,6 +8,8 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import '../styles/index.scss';
+import '../styles/globals/globals.scss';
+import '../styles/reset.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const apiUri = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`;

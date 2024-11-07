@@ -1,5 +1,4 @@
-@use './variables' as *;
-@use '../globals/base' as *;
+@use "../base/index.module.scss" as *;
 
 h1 {
   font-size: base(2.25);

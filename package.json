@@ -7,13 +7,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "stylelint && next dev",
+    "dev": "concurrently \"next dev\" \"stylelint\"  \"typed-scss-modules src --watch\"",
     "build": "stylelint && next build",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint-staged": "lint-staged --verbose",
-    "stylelint": "stylelint 'src/styles/**/*.scss'"
+    "stylelint": "stylelint \"**/*.scss\""
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",
@@ -21,12 +21,13 @@
     "@lexical/list": "^0.17.0",
     "@lexical/rich-text": "^0.17.0",
     "@payloadcms/richtext-lexical": "^0.11.2",
+    "concurrently": "^9.0.1",
     "dotenv": "^16.4.5",
     "escape-html": "^1.0.3",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
     "lexical": "^0.17.0",
-    "next": "^14.2.5",
+    "next": "^15.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -57,14 +58,19 @@
     "husky": "^9.1.5",
     "lint-staged": "^14.0.1",
     "nodemon": "^3.1.4",
-    "sass": "^1.79.4",
-    "stylelint": "^16.9.0",
+    "sass": "^1.80.5",
+    "stylelint": "^16.10.0",
+    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^14.1.0",
-    "stylelint-scss": "^6.7.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.2",
+    "stylelint-scss": "^6.8.1",
     "ts-node": "^10.9.2",
+    "typed-scss-modules": "^8.0.1",
     "typescript": "^5.5.4"
   },
   "lint-staged": {
+    "**/*.scss": "stylelint --fix",
     "**/*.{js,ts,jsx,tsx}": [
       "eslint",
       "bash -c tsc"

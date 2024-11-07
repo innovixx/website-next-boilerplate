@@ -16,7 +16,6 @@ export const ImageComponent: React.FC<ImageBlockFragmentFragment> = ({
         <NextImage
           src={image.url ?? ''}
           alt={image.alt}
-          layout="responsive"
           width={image.width ?? 0}
           height={image.height ?? 0}
           sizes={sizesToUse}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { Fragment } from 'react';
 import { SerializedListItemNode, SerializedListNode } from '@lexical/list';
 import { SerializedHeadingNode } from '@lexical/rich-text';

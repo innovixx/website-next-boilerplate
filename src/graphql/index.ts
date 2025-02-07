@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { GraphQLClient } from 'graphql-request';
 import dotenv from 'dotenv';
 

@@ -14,7 +14,6 @@ export const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
     {layout.map((block, i) => {
       // make blockType first character uppercase
       const blockType = `${toPascalCase(`${block.blockType}`)}Component`;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const Block: React.FC<any> = components[blockType as keyof typeof components];
 
       if (Block) {

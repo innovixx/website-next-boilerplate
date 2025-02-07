@@ -1,7 +1,7 @@
 const splitIntoWords = (str?: string) => {
   if (!str) return [];
 
-  const words = str.match(/[A-Z]+(?=_)|[A-Z]+(?![a-z])|[A-Za-z][a-z]+|[0-9]+/g);
+  const words = str.match(/[A-Z]+(?=_)|[A-Z]+(?![a-z])|[A-Za-z][a-z]+|\d+/g);
   return words || [];
 };
 

@@ -30,14 +30,14 @@
     "./src/graphql/generated/schema.ts",
     "src/components/RichText/nodeFormat.ts",
     "src/components/RichText/serialize.tsx",
-    ".next/types/**/*.ts"
   ],
   "include": [
-    "eslint.config.mjs",
     "**/*.d.ts",
     "**/*.scss.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "eslint.config.mjs",
     "stylelint.config.mjs",
+    ".next/types/**/*.ts"
   ]
 }

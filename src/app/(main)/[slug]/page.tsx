@@ -28,7 +28,7 @@ const getPageData = async (slug: string, preview?: boolean): Promise<PagesQuery 
 	return pageData;
 };
 
-export const Page: React.FC<Props> = async ({ params, searchParams }): Promise<JSX.Element> => {
+export default async function Page({ params, searchParams }: Props): Promise<JSX.Element> {
 	const { slug } = await params;
 	const { preview } = await searchParams;
 	const pageSlug = !slug ? 'home' : slug;
@@ -56,7 +56,7 @@ export const Page: React.FC<Props> = async ({ params, searchParams }): Promise<J
 			<RefreshRouteOnSave />
 		</div>
 	);
-};
+}
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
 	const { slug } = await params;
@@ -83,5 +83,3 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 		},
 	});
 }
-
-export default Page;

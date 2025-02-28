@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Container } from '../../components/layouts';
 
-export default (): React.JSX.Element => (
+const NotFound: React.FC = () => (
 	<Container>
 		<h1>404 - Page Not Found</h1>
 		<p>
@@ -13,3 +13,5 @@ export default (): React.JSX.Element => (
 		</p>
 	</Container>
 );
+
+export default NotFound;

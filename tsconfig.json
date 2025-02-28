@@ -29,7 +29,8 @@
     "node_modules",
     "./src/graphql/generated/schema.ts",
     "src/components/RichText/nodeFormat.ts",
-    "src/components/RichText/serialize.tsx"
+    "src/components/RichText/serialize.tsx",
+    ".next/types/**/*.ts"
   ],
   "include": [
     "eslint.config.mjs",
@@ -38,6 +39,5 @@
     "**/*.ts",
     "**/*.tsx",
     "stylelint.config.mjs",
-    ".next/types/**/*.ts"
   ]
 }

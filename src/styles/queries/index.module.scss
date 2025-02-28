@@ -1,0 +1,29 @@
+@use "../base/index.module.scss" as *;
+@use 'sass:map';
+
+$breakpoints: (
+  xxs: 320,
+  xs: 425,
+  sm: 768,
+  md: 1024,
+  lg: 1140,
+  xl: 2560,
+);
+
+@mixin queries($breakpoint) {
+  $breakpoint-value: map.get($breakpoints, $breakpoint);
+  @media only screen and (max-width: #{$breakpoint-value}px) {
+    @content;
+  }
+}
+
+:export {
+  @each $key, $value in $breakpoints {
+    #{"" + $key}: $value;
+  }
+  lg: map.get($breakpoints, lg),;
+  md: map.get($breakpoints, md),;
+  sm: map.get($breakpoints, sm),;
+  xl: map.get($breakpoints, xl),;
+  xs: map.get($breakpoints, xs),
+}

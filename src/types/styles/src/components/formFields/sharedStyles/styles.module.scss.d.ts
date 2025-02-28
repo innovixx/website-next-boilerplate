@@ -1,0 +1,15 @@
+export declare const black: string;
+export declare const border: string;
+export declare const dark: string;
+export declare const errorMessage: string;
+export declare const input: string;
+export declare const lg: string;
+export declare const light: string;
+export declare const md: string;
+export declare const sm: string;
+export declare const toggleInput: string;
+export declare const toggleOptionsContainer: string;
+export declare const white: string;
+export declare const xl: string;
+export declare const xs: string;
+export declare const xxs: string;

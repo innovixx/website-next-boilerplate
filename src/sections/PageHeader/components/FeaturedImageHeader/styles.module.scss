@@ -1,0 +1,26 @@
+@use '../../../../styles/' as *;
+
+.container {
+  margin-bottom: spacing(medium) !important;
+  padding-top: spacing(medium) !important;
+}
+
+.gridContainer {
+  column-gap: spacing(medium) !important;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.title {
+  margin-bottom: spacing(medium);
+}
+
+.imageCell {
+  @include queries(md) {
+    display: none !important;
+  }
+}

@@ -18,16 +18,30 @@
     "noEmit": true,
     "incremental": true,
     "moduleResolution": "bundler",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": [
     "node_modules",
     "tsconfig.codegen.json",
-    "./src/graphql/generated/schema.ts"
+    "./src/graphql/generated/schema.ts",
+    "src/components/RichText/nodeFormat.ts",
+    "src/components/RichText/serialize.tsx",
   ],
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
-    "src/pages/index.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "./src",
+    "eslint.config.mjs",
+    "stylelint.config.mjs",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.scss.d.ts"
   ]
 }

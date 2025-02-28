@@ -1,14 +1,95 @@
 @use "../base/index.module.scss" as *;
+@use "../queries/index.module.scss" as *;
 
-html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@mixin h1 {
+  font-size: base(3.2);
+  font-weight: 600;
+  line-height: base(3.2) * 1.2;
+  margin: 0;
+  margin-bottom: base(0.5);
+
+  @include queries(md) {
+    font-size: base(2.4);
+    line-height: base(2.4) * 1.2;
+  }
+
+  @include queries(sm) {
+    font-size: base(1.6);
+    line-height: base(1.6) * 1.2;
+  }
 }
 
-h1 {
-  font-size: base(2.25);
+@mixin h2 {
+  font-size: base(2.4);
+  font-weight: 300;
+  line-height: base(2.4) * 1.2;
+  margin: 0;
+  margin-bottom: base(0.5);
+
+  @include queries(md) {
+    font-size: base(2);
+    line-height: base(2) * 1.2;
+  }
+
+  @include queries(sm) {
+    font-size: base(1.6);
+    line-height: base(1.6) * 1.2;
+  }
 }
 
-p {
+@mixin h3 {
+  font-size: base(2);
+  font-weight: 300;
+  line-height: base(2) * 1.2;
+  margin: 0;
+  margin-bottom: base(0.5);
+
+  @include queries(md) {
+    font-size: base(1.6);
+    line-height: base(1.6) * 1.2;
+  }
+
+  @include queries(sm) {
+    font-size: base(1.2);
+    line-height: base(1.2) * 1.2;
+  }
+}
+
+@mixin h4 {
+  font-size: base(1.6);
+  font-weight: 300;
+  line-height: base(1.6) * 1.2;
+  margin: 0;
+  margin-bottom: base(0.5);
+
+  @include queries(md) {
+    font-size: base();
+    line-height: base() * 1.2;
+  }
+}
+
+@mixin body {
+  font-size: base();
+  font-weight: 300;
+  line-height: base() * 1.2;
+  margin: 0;
+  margin-bottom: base(0.5);
+
+  @include queries(sm) {
+    font-size: base(0.8);
+    line-height: base(0.8) * 1.2;
+  }
+}
+
+@mixin smallText {
   font-size: base(0.8);
   line-height: base(0.8) * 1.2;
+}
+
+@mixin overline {
+  color: colors(grey) !important;
+  font-size: base(0.7);
+  font-weight: 700;
+  line-height: base(0.7) * 1.2;
+  text-transform: uppercase;
 }

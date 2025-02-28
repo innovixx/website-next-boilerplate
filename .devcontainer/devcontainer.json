@@ -13,8 +13,7 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "orsenkucher.vscode-graphql",
-        "stylelint.vscode-stylelint",
-        "cipchk.cssrem"
+        "stylelint.vscode-stylelint"
       ]
     }
   },

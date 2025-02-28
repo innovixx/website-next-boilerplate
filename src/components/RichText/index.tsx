@@ -1,14 +1,48 @@
+
+import type { DefaultNodeTypes } from '@payloadcms/richtext-lexical';
+import type { JSXConverters, JSXConvertersFunction } from '@payloadcms/richtext-lexical/react';
+import { RichText as SerializedRichText } from '@payloadcms/richtext-lexical/react';
+import type { SerializedEditorState } from 'lexical';
 import React from 'react';
-import { serializeLexical } from './serialize';
-import { Content } from '../../graphql/generated/schema';
+import { AppLink } from '../AppLink';
+import styles from './styles.module.scss';
 
-export const RichText: React.FC<{ className?: string; content: Content['content'] }> = ({
-  className,
-  content,
-}) => {
-  if (!content?.root?.children) {
-    return null;
-  }
+type NodeTypes = DefaultNodeTypes
 
-  return <div className={className}>{serializeLexical({ nodes: content?.root?.children })}</div>;
+type Props = {
+	data: SerializedEditorState
+} & React.HTMLAttributes<HTMLDivElement>
+
+const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => {
+	const converters: JSXConverters<NodeTypes> = {
+		...defaultConverters,
+		link: ({ node, nodesToJSX }) => {
+			const { fields } = node;
+
+			return (
+				<AppLink
+					link={{
+						reference: fields.doc,
+						url: fields.url,
+					}}
+				>
+					{nodesToJSX({ nodes: node.children })}
+				</AppLink>
+			);
+		},
+	};
+
+	return converters;
+};
+
+export const RichText: React.FC<Props> = (props) => {
+	const { ...rest } = props;
+
+	return (
+		<SerializedRichText
+			className={styles.richText}
+			converters={jsxConverters}
+			{...rest}
+		/>
+	);
 };

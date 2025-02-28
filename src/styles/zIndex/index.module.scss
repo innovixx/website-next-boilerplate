@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$zIndex: (
+  header: 30,
+  modal: 20,
+  page: 10,
+);
+
+@function zIndex($key) {
+  @return map.get($zIndex, $key);
+}

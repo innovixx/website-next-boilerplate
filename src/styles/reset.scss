@@ -3,6 +3,8 @@
 *::before,
 *::after {
   box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -10,14 +12,6 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-}
-
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
 }
 
 /* A elements that don't have a class get default styles */
@@ -39,14 +33,4 @@ textarea,
 select {
   font-family: inherit;
   font-size: inherit;
-}
-
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
 }

@@ -1,0 +1,27 @@
+@use'../../../styles/' as *;
+
+.input {
+  &:focus-visible {
+    outline-offset: 2px;
+  }
+}
+
+
+.toggleOptionsContainer {
+  border: none;
+  padding: 0;
+}
+
+.toggleInput {
+
+  &:hover {
+    background-color: colors(light);
+    border-color: colors(light);
+  }
+}
+
+.errorMessage {
+  font-weight: 700;
+  padding-top: base(0.5);
+  @include smallText;
+}

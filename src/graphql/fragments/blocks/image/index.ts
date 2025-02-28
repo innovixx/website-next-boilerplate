@@ -11,5 +11,6 @@ export const IMAGE_BLOCK = gql`
     id
     blockName
     blockType
+    imageSize
   }
 `;

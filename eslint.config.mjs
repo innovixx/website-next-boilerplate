@@ -8,7 +8,6 @@ export default [
 	typescriptConfig,
 	{
 		ignores: [
-			'.next',
 			'src/graphql/generated/schema.ts',
 			'src/components/RichText/nodeFormat.ts',
 			'src/components/RichText/serialize.tsx',

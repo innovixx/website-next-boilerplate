@@ -13,6 +13,9 @@ export const PAGES = gql`
         }
         header {
           type
+          image {
+          ...MediaFieldFragment
+        }
         }
         layout {
           blocks {

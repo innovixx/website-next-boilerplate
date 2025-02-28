@@ -1,6 +1,5 @@
 import React from 'react';
 import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
-import { Container } from '../../../../components/layouts';
 import { RichText } from '../../../../components';
 
 interface Props {
@@ -9,8 +8,8 @@ interface Props {
 }
 
 export const DefaultHeader: React.FC<Props> = ({ description, title }) => (
-	<Container>
+	<div>
 		<h1>{title}</h1>
 		<RichText data={description} />
-	</Container>
+	</div>
 );

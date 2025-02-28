@@ -18,9 +18,3 @@
 .title {
   margin-bottom: spacing(medium);
 }
-
-.imageCell {
-  @include queries(md) {
-    display: none !important;
-  }
-}

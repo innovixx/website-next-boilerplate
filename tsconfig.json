@@ -27,21 +27,17 @@
   },
   "exclude": [
     "node_modules",
-    "tsconfig.codegen.json",
     "./src/graphql/generated/schema.ts",
     "src/components/RichText/nodeFormat.ts",
-    "src/components/RichText/serialize.tsx",
+    "src/components/RichText/serialize.tsx"
   ],
   "include": [
-    "**/*.ts",
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "./src",
     "eslint.config.mjs",
+    "**/*.d.ts",
+    "**/*.scss.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
     "stylelint.config.mjs",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts",
-    "src/**/*.scss.d.ts"
+    ".next/types/**/*.ts"
   ]
 }

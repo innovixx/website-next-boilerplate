@@ -1,7 +1,6 @@
 import { Cell, Grid } from '@faceless-ui/css-grid';
 import React from 'react';
 import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
-import { Container } from '../../../../components/layouts';
 import type { Page_Header } from '../../../../graphql/generated/schema';
 import { AppImage, RichText } from '../../../../components';
 import styles from './styles.module.scss';
@@ -13,7 +12,7 @@ interface Props {
 }
 
 export const FeaturedImageHeader: React.FC<Props> = ({ header, description, title }) => (
-	<Container className={styles.container}>
+	<div className={styles.container}>
 		<Grid>
 			<Cell
 				cols={7}
@@ -25,7 +24,6 @@ export const FeaturedImageHeader: React.FC<Props> = ({ header, description, titl
 			<Cell
 				cols={5}
 				colsL={12}
-				className={styles.imageCell}
 			>
 				<AppImage
 					image={header.image}
@@ -34,5 +32,5 @@ export const FeaturedImageHeader: React.FC<Props> = ({ header, description, titl
 				/>
 			</Cell>
 		</Grid>
-	</Container>
+	</div>
 );

@@ -1,6 +1,8 @@
 import React from 'react';
 import * as components from '../../blocks';
 import { toPascalCase } from '../../utils/changeCase';
+import { Container } from '../layouts';
+import styles from "./styles.module.scss"
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,7 +11,7 @@ type Props = {
 };
 
 export const RenderBlocks: React.FC<Props> = ({ blocks, ...rest }) => (
-  <React.Fragment>
+  <Container className={styles.container}>
     {blocks?.map((block, i) => {
       const blockType = `${toPascalCase(block.blockType)}`;
       const Block: React.FC<any> = components[blockType as keyof typeof components];
@@ -29,5 +31,5 @@ export const RenderBlocks: React.FC<Props> = ({ blocks, ...rest }) => (
       }
       return null;
     })}
-  </React.Fragment>
+  </Container>
 );

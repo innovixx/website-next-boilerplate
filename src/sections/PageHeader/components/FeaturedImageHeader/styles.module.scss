@@ -1,8 +1,8 @@
 @use '../../../../styles/' as *;
 
 .container {
-  margin-bottom: spacing(medium) !important;
-  padding-top: spacing(medium) !important;
+  margin-bottom: spacing(small) !important;
+  padding-top: spacing(small) !important;
 }
 
 .gridContainer {
@@ -17,4 +17,10 @@
 
 .title {
   margin-bottom: spacing(medium);
+}
+
+.image {
+  @include queries(md) {
+    height: auto;
+  }
 }

@@ -23,20 +23,13 @@ export const HeaderMenu: React.FC<Props> = ({ headerMenu }) => (
 			/>
 			<nav className={styles.nav}>
 				{
-					headerMenu?.menuGroups?.map((menuGroup) => (
-						<ul key={menuGroup.id}>
-							{
-								menuGroup.text && (
-									<p>{menuGroup.text}</p>
-								)
-							}
-							{menuGroup.links?.map((link) => (
-								<li key={link.id}>
-									<AppLink
-										link={link?.link}
-									/>
-								</li>
-							))}
+					headerMenu?.links?.map((link) => (
+						<ul key={link.id}>
+							<li>
+								<AppLink
+									link={link.link}
+								/>
+							</li>
 						</ul>
 					))
 				}

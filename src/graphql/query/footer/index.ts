@@ -1,20 +1,29 @@
 import { gql } from 'graphql-request';
-import { LINK_FIELD } from '../../fragments/fields';
 
 export const FOOTER_MENU = gql`
   query FooterMenu($draft: Boolean) {
 		FooterMenu(draft: $draft) {
 			menuGroups {
-				id
+				text
 				links {
 					id
 					link {
-						...LinkFieldFragment
+						type
+						label
+						reference {
+							value {
+								... on Page {
+									title
+									slug
+								}
+							}
+							relationTo
+						}
+						url
 					}
 				}
-				text
+				id
 			}
 		}
 	}
-  ${LINK_FIELD}
 `;

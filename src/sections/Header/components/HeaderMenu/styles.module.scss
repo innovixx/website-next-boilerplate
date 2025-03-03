@@ -7,6 +7,9 @@
 }
 
 .nav {
+  display: flex;
+  align-items: center;
+  gap: base(0.5);
   ul {
     list-style-type: none;
   }

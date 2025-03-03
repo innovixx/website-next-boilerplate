@@ -10,7 +10,7 @@ export type ContentBlockFragmentFragment = { __typename?: 'Content', content?: a
 
 export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null };
 
-export type LinkFieldFragmentFragment = { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null } | null } | null };
+export type LinkFieldFragmentFragment = { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null, title?: string | null } | null } | null };
 
 export type MediaFieldFragmentFragment = { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null };
 
@@ -19,14 +19,14 @@ export type FooterMenuQueryVariables = Exact<{
 }>;
 
 
-export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', id?: string | null, text?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null } | null } | null } | null }> | null }> | null } | null };
+export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', id?: string | null, text?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null, title?: string | null } | null } | null } | null }> | null }> | null } | null };
 
 export type HeaderMenuQueryVariables = Exact<{
   draft?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type HeaderMenuQuery = { __typename?: 'Query', HeaderMenu?: { __typename?: 'HeaderMenu', menuGroups?: Array<{ __typename?: 'HeaderMenu_MenuGroups', text?: string | null, id?: string | null, links?: Array<{ __typename?: 'HeaderMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null } | null } | null } | null }> | null }> | null } | null };
+export type HeaderMenuQuery = { __typename?: 'Query', HeaderMenu?: { __typename?: 'HeaderMenu', links?: Array<{ __typename?: 'HeaderMenu_Links', id?: string | null, link?: { __typename?: 'Link', label?: string | null, type?: Link_Type | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null } | null };
 
 export type PagesQueryVariables = Exact<{
   draft?: InputMaybe<Scalars['Boolean']>;
@@ -867,14 +867,14 @@ export enum FooterMenu_MenuGroups_Links_Link_ReferenceRelationshipInputRelationT
 export type HeaderMenu = {
   __typename?: 'HeaderMenu';
   createdAt?: Maybe<Scalars['DateTime']>;
-  menuGroups?: Maybe<Array<HeaderMenu_MenuGroups>>;
+  links?: Maybe<Array<HeaderMenu_Links>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type HeaderMenuDocAccessFields = {
   __typename?: 'HeaderMenuDocAccessFields';
   createdAt?: Maybe<HeaderMenuDocAccessFields_CreatedAt>;
-  menuGroups?: Maybe<HeaderMenuDocAccessFields_MenuGroups>;
+  links?: Maybe<HeaderMenuDocAccessFields_Links>;
   updatedAt?: Maybe<HeaderMenuDocAccessFields_UpdatedAt>;
 };
 
@@ -906,307 +906,215 @@ export type HeaderMenuDocAccessFields_CreatedAt_Update = {
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Delete>;
-  fields?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Fields>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Update>;
+export type HeaderMenuDocAccessFields_Links = {
+  __typename?: 'HeaderMenuDocAccessFields_links';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Delete>;
+  fields?: Maybe<HeaderMenuDocAccessFields_Links_Fields>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_Create';
+export type HeaderMenuDocAccessFields_Links_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_Delete';
+export type HeaderMenuDocAccessFields_Links_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Fields = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_Fields';
-  id?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Id>;
-  links?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links>;
-  text?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Text>;
+export type HeaderMenuDocAccessFields_Links_Fields = {
+  __typename?: 'HeaderMenuDocAccessFields_links_Fields';
+  id?: Maybe<HeaderMenuDocAccessFields_Links_Id>;
+  link?: Maybe<HeaderMenuDocAccessFields_Links_Link>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_Read';
+export type HeaderMenuDocAccessFields_Links_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_Update';
+export type HeaderMenuDocAccessFields_Links_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Id = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_id';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Id_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Id_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Id_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Id_Update>;
+export type HeaderMenuDocAccessFields_Links_Id = {
+  __typename?: 'HeaderMenuDocAccessFields_links_id';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Id_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Id_Delete>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Id_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Id_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Id_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_id_Create';
+export type HeaderMenuDocAccessFields_Links_Id_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_id_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Id_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_id_Delete';
+export type HeaderMenuDocAccessFields_Links_Id_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_id_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Id_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_id_Read';
+export type HeaderMenuDocAccessFields_Links_Id_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_id_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Id_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_id_Update';
+export type HeaderMenuDocAccessFields_Links_Id_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_id_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Delete>;
-  fields?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Fields>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Update>;
+export type HeaderMenuDocAccessFields_Links_Link = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Link_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Link_Delete>;
+  fields?: Maybe<HeaderMenuDocAccessFields_Links_Link_Fields>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Link_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Link_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_Create';
+export type HeaderMenuDocAccessFields_Links_Link_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_Delete';
+export type HeaderMenuDocAccessFields_Links_Link_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Fields = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_Fields';
-  id?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Id>;
-  link?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link>;
+export type HeaderMenuDocAccessFields_Links_Link_Fields = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_Fields';
+  label?: Maybe<HeaderMenuDocAccessFields_Links_Link_Label>;
+  reference?: Maybe<HeaderMenuDocAccessFields_Links_Link_Reference>;
+  type?: Maybe<HeaderMenuDocAccessFields_Links_Link_Type>;
+  url?: Maybe<HeaderMenuDocAccessFields_Links_Link_Url>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_Read';
+export type HeaderMenuDocAccessFields_Links_Link_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_Update';
+export type HeaderMenuDocAccessFields_Links_Link_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Id = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_id';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Id_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Id_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Id_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Id_Update>;
+export type HeaderMenuDocAccessFields_Links_Link_Label = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_label';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Link_Label_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Link_Label_Delete>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Link_Label_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Link_Label_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Id_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_id_Create';
+export type HeaderMenuDocAccessFields_Links_Link_Label_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_label_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Id_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_id_Delete';
+export type HeaderMenuDocAccessFields_Links_Link_Label_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_label_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Id_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_id_Read';
+export type HeaderMenuDocAccessFields_Links_Link_Label_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_label_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Id_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_id_Update';
+export type HeaderMenuDocAccessFields_Links_Link_Label_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_label_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Delete>;
-  fields?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Fields>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Update>;
+export type HeaderMenuDocAccessFields_Links_Link_Reference = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_reference';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Link_Reference_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Link_Reference_Delete>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Link_Reference_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Link_Reference_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_Create';
+export type HeaderMenuDocAccessFields_Links_Link_Reference_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_reference_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_Delete';
+export type HeaderMenuDocAccessFields_Links_Link_Reference_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_reference_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Fields = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_Fields';
-  label?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label>;
-  reference?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference>;
-  type?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type>;
-  url?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url>;
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_Read';
+export type HeaderMenuDocAccessFields_Links_Link_Reference_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_reference_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_Update';
+export type HeaderMenuDocAccessFields_Links_Link_Reference_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_reference_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_label';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Update>;
+export type HeaderMenuDocAccessFields_Links_Link_Type = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_type';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Link_Type_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Link_Type_Delete>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Link_Type_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Link_Type_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_label_Create';
+export type HeaderMenuDocAccessFields_Links_Link_Type_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_type_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_label_Delete';
+export type HeaderMenuDocAccessFields_Links_Link_Type_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_type_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_label_Read';
+export type HeaderMenuDocAccessFields_Links_Link_Type_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_type_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Label_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_label_Update';
+export type HeaderMenuDocAccessFields_Links_Link_Type_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_type_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_reference';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Update>;
+export type HeaderMenuDocAccessFields_Links_Link_Url = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_url';
+  create?: Maybe<HeaderMenuDocAccessFields_Links_Link_Url_Create>;
+  delete?: Maybe<HeaderMenuDocAccessFields_Links_Link_Url_Delete>;
+  read?: Maybe<HeaderMenuDocAccessFields_Links_Link_Url_Read>;
+  update?: Maybe<HeaderMenuDocAccessFields_Links_Link_Url_Update>;
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_reference_Create';
+export type HeaderMenuDocAccessFields_Links_Link_Url_Create = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_url_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_reference_Delete';
+export type HeaderMenuDocAccessFields_Links_Link_Url_Delete = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_url_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_reference_Read';
+export type HeaderMenuDocAccessFields_Links_Link_Url_Read = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_url_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Reference_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_reference_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_type';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Update>;
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_type_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_type_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_type_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Type_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_type_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_url';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Update>;
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_url_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_url_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_url_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Links_Link_Url_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_links_link_url_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Text = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_text';
-  create?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Text_Create>;
-  delete?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Text_Delete>;
-  read?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Text_Read>;
-  update?: Maybe<HeaderMenuDocAccessFields_MenuGroups_Text_Update>;
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Text_Create = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_text_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Text_Delete = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_text_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Text_Read = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_text_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuDocAccessFields_MenuGroups_Text_Update = {
-  __typename?: 'HeaderMenuDocAccessFields_menuGroups_text_Update';
+export type HeaderMenuDocAccessFields_Links_Link_Url_Update = {
+  __typename?: 'HeaderMenuDocAccessFields_links_link_url_Update';
   permission: Scalars['Boolean'];
 };
 
@@ -1241,7 +1149,7 @@ export type HeaderMenuDocAccessFields_UpdatedAt_Update = {
 export type HeaderMenuFields = {
   __typename?: 'HeaderMenuFields';
   createdAt?: Maybe<HeaderMenuFields_CreatedAt>;
-  menuGroups?: Maybe<HeaderMenuFields_MenuGroups>;
+  links?: Maybe<HeaderMenuFields_Links>;
   updatedAt?: Maybe<HeaderMenuFields_UpdatedAt>;
 };
 
@@ -1273,307 +1181,215 @@ export type HeaderMenuFields_CreatedAt_Update = {
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups = {
-  __typename?: 'HeaderMenuFields_menuGroups';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Delete>;
-  fields?: Maybe<HeaderMenuFields_MenuGroups_Fields>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Update>;
+export type HeaderMenuFields_Links = {
+  __typename?: 'HeaderMenuFields_links';
+  create?: Maybe<HeaderMenuFields_Links_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Delete>;
+  fields?: Maybe<HeaderMenuFields_Links_Fields>;
+  read?: Maybe<HeaderMenuFields_Links_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_Create';
+export type HeaderMenuFields_Links_Create = {
+  __typename?: 'HeaderMenuFields_links_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_Delete';
+export type HeaderMenuFields_Links_Delete = {
+  __typename?: 'HeaderMenuFields_links_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Fields = {
-  __typename?: 'HeaderMenuFields_menuGroups_Fields';
-  id?: Maybe<HeaderMenuFields_MenuGroups_Id>;
-  links?: Maybe<HeaderMenuFields_MenuGroups_Links>;
-  text?: Maybe<HeaderMenuFields_MenuGroups_Text>;
+export type HeaderMenuFields_Links_Fields = {
+  __typename?: 'HeaderMenuFields_links_Fields';
+  id?: Maybe<HeaderMenuFields_Links_Id>;
+  link?: Maybe<HeaderMenuFields_Links_Link>;
 };
 
-export type HeaderMenuFields_MenuGroups_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_Read';
+export type HeaderMenuFields_Links_Read = {
+  __typename?: 'HeaderMenuFields_links_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_Update';
+export type HeaderMenuFields_Links_Update = {
+  __typename?: 'HeaderMenuFields_links_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Id = {
-  __typename?: 'HeaderMenuFields_menuGroups_id';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Id_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Id_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Id_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Id_Update>;
+export type HeaderMenuFields_Links_Id = {
+  __typename?: 'HeaderMenuFields_links_id';
+  create?: Maybe<HeaderMenuFields_Links_Id_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Id_Delete>;
+  read?: Maybe<HeaderMenuFields_Links_Id_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Id_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Id_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_id_Create';
+export type HeaderMenuFields_Links_Id_Create = {
+  __typename?: 'HeaderMenuFields_links_id_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Id_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_id_Delete';
+export type HeaderMenuFields_Links_Id_Delete = {
+  __typename?: 'HeaderMenuFields_links_id_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Id_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_id_Read';
+export type HeaderMenuFields_Links_Id_Read = {
+  __typename?: 'HeaderMenuFields_links_id_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Id_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_id_Update';
+export type HeaderMenuFields_Links_Id_Update = {
+  __typename?: 'HeaderMenuFields_links_id_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links = {
-  __typename?: 'HeaderMenuFields_menuGroups_links';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Delete>;
-  fields?: Maybe<HeaderMenuFields_MenuGroups_Links_Fields>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Update>;
+export type HeaderMenuFields_Links_Link = {
+  __typename?: 'HeaderMenuFields_links_link';
+  create?: Maybe<HeaderMenuFields_Links_Link_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Link_Delete>;
+  fields?: Maybe<HeaderMenuFields_Links_Link_Fields>;
+  read?: Maybe<HeaderMenuFields_Links_Link_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Link_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_Create';
+export type HeaderMenuFields_Links_Link_Create = {
+  __typename?: 'HeaderMenuFields_links_link_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_Delete';
+export type HeaderMenuFields_Links_Link_Delete = {
+  __typename?: 'HeaderMenuFields_links_link_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Fields = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_Fields';
-  id?: Maybe<HeaderMenuFields_MenuGroups_Links_Id>;
-  link?: Maybe<HeaderMenuFields_MenuGroups_Links_Link>;
+export type HeaderMenuFields_Links_Link_Fields = {
+  __typename?: 'HeaderMenuFields_links_link_Fields';
+  label?: Maybe<HeaderMenuFields_Links_Link_Label>;
+  reference?: Maybe<HeaderMenuFields_Links_Link_Reference>;
+  type?: Maybe<HeaderMenuFields_Links_Link_Type>;
+  url?: Maybe<HeaderMenuFields_Links_Link_Url>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_Read';
+export type HeaderMenuFields_Links_Link_Read = {
+  __typename?: 'HeaderMenuFields_links_link_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_Update';
+export type HeaderMenuFields_Links_Link_Update = {
+  __typename?: 'HeaderMenuFields_links_link_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Id = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_id';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Id_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Id_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Id_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Id_Update>;
+export type HeaderMenuFields_Links_Link_Label = {
+  __typename?: 'HeaderMenuFields_links_link_label';
+  create?: Maybe<HeaderMenuFields_Links_Link_Label_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Link_Label_Delete>;
+  read?: Maybe<HeaderMenuFields_Links_Link_Label_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Link_Label_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Id_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_id_Create';
+export type HeaderMenuFields_Links_Link_Label_Create = {
+  __typename?: 'HeaderMenuFields_links_link_label_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Id_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_id_Delete';
+export type HeaderMenuFields_Links_Link_Label_Delete = {
+  __typename?: 'HeaderMenuFields_links_link_label_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Id_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_id_Read';
+export type HeaderMenuFields_Links_Link_Label_Read = {
+  __typename?: 'HeaderMenuFields_links_link_label_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Id_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_id_Update';
+export type HeaderMenuFields_Links_Link_Label_Update = {
+  __typename?: 'HeaderMenuFields_links_link_label_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Delete>;
-  fields?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Fields>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Update>;
+export type HeaderMenuFields_Links_Link_Reference = {
+  __typename?: 'HeaderMenuFields_links_link_reference';
+  create?: Maybe<HeaderMenuFields_Links_Link_Reference_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Link_Reference_Delete>;
+  read?: Maybe<HeaderMenuFields_Links_Link_Reference_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Link_Reference_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_Create';
+export type HeaderMenuFields_Links_Link_Reference_Create = {
+  __typename?: 'HeaderMenuFields_links_link_reference_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_Delete';
+export type HeaderMenuFields_Links_Link_Reference_Delete = {
+  __typename?: 'HeaderMenuFields_links_link_reference_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Fields = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_Fields';
-  label?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Label>;
-  reference?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Reference>;
-  type?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Type>;
-  url?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Url>;
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_Read';
+export type HeaderMenuFields_Links_Link_Reference_Read = {
+  __typename?: 'HeaderMenuFields_links_link_reference_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_Update';
+export type HeaderMenuFields_Links_Link_Reference_Update = {
+  __typename?: 'HeaderMenuFields_links_link_reference_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Label = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_label';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Label_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Label_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Label_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Label_Update>;
+export type HeaderMenuFields_Links_Link_Type = {
+  __typename?: 'HeaderMenuFields_links_link_type';
+  create?: Maybe<HeaderMenuFields_Links_Link_Type_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Link_Type_Delete>;
+  read?: Maybe<HeaderMenuFields_Links_Link_Type_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Link_Type_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Label_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_label_Create';
+export type HeaderMenuFields_Links_Link_Type_Create = {
+  __typename?: 'HeaderMenuFields_links_link_type_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Label_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_label_Delete';
+export type HeaderMenuFields_Links_Link_Type_Delete = {
+  __typename?: 'HeaderMenuFields_links_link_type_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Label_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_label_Read';
+export type HeaderMenuFields_Links_Link_Type_Read = {
+  __typename?: 'HeaderMenuFields_links_link_type_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Label_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_label_Update';
+export type HeaderMenuFields_Links_Link_Type_Update = {
+  __typename?: 'HeaderMenuFields_links_link_type_Update';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Reference = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_reference';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Reference_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Reference_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Reference_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Reference_Update>;
+export type HeaderMenuFields_Links_Link_Url = {
+  __typename?: 'HeaderMenuFields_links_link_url';
+  create?: Maybe<HeaderMenuFields_Links_Link_Url_Create>;
+  delete?: Maybe<HeaderMenuFields_Links_Link_Url_Delete>;
+  read?: Maybe<HeaderMenuFields_Links_Link_Url_Read>;
+  update?: Maybe<HeaderMenuFields_Links_Link_Url_Update>;
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Reference_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_reference_Create';
+export type HeaderMenuFields_Links_Link_Url_Create = {
+  __typename?: 'HeaderMenuFields_links_link_url_Create';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Reference_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_reference_Delete';
+export type HeaderMenuFields_Links_Link_Url_Delete = {
+  __typename?: 'HeaderMenuFields_links_link_url_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Reference_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_reference_Read';
+export type HeaderMenuFields_Links_Link_Url_Read = {
+  __typename?: 'HeaderMenuFields_links_link_url_Read';
   permission: Scalars['Boolean'];
 };
 
-export type HeaderMenuFields_MenuGroups_Links_Link_Reference_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_reference_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Type = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_type';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Type_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Type_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Type_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Type_Update>;
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Type_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_type_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Type_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_type_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Type_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_type_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Type_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_type_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Url = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_url';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Url_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Url_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Url_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Links_Link_Url_Update>;
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Url_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_url_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Url_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_url_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Url_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_url_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Links_Link_Url_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_links_link_url_Update';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Text = {
-  __typename?: 'HeaderMenuFields_menuGroups_text';
-  create?: Maybe<HeaderMenuFields_MenuGroups_Text_Create>;
-  delete?: Maybe<HeaderMenuFields_MenuGroups_Text_Delete>;
-  read?: Maybe<HeaderMenuFields_MenuGroups_Text_Read>;
-  update?: Maybe<HeaderMenuFields_MenuGroups_Text_Update>;
-};
-
-export type HeaderMenuFields_MenuGroups_Text_Create = {
-  __typename?: 'HeaderMenuFields_menuGroups_text_Create';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Text_Delete = {
-  __typename?: 'HeaderMenuFields_menuGroups_text_Delete';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Text_Read = {
-  __typename?: 'HeaderMenuFields_menuGroups_text_Read';
-  permission: Scalars['Boolean'];
-};
-
-export type HeaderMenuFields_MenuGroups_Text_Update = {
-  __typename?: 'HeaderMenuFields_menuGroups_text_Update';
+export type HeaderMenuFields_Links_Link_Url_Update = {
+  __typename?: 'HeaderMenuFields_links_link_url_Update';
   permission: Scalars['Boolean'];
 };
 
@@ -1629,25 +1445,18 @@ export type HeaderMenuUpdateDocAccess = {
   where?: Maybe<Scalars['JSONObject']>;
 };
 
-export type HeaderMenu_MenuGroups = {
-  __typename?: 'HeaderMenu_MenuGroups';
-  id?: Maybe<Scalars['String']>;
-  links?: Maybe<Array<HeaderMenu_MenuGroups_Links>>;
-  text?: Maybe<Scalars['String']>;
-};
-
-export type HeaderMenu_MenuGroups_Links = {
-  __typename?: 'HeaderMenu_MenuGroups_Links';
+export type HeaderMenu_Links = {
+  __typename?: 'HeaderMenu_Links';
   id?: Maybe<Scalars['String']>;
   link?: Maybe<Link>;
 };
 
-export type HeaderMenu_MenuGroups_Links_Link_ReferenceRelationshipInput = {
-  relationTo?: InputMaybe<HeaderMenu_MenuGroups_Links_Link_ReferenceRelationshipInputRelationTo>;
+export type HeaderMenu_Links_Link_ReferenceRelationshipInput = {
+  relationTo?: InputMaybe<HeaderMenu_Links_Link_ReferenceRelationshipInputRelationTo>;
   value?: InputMaybe<Scalars['JSON']>;
 };
 
-export enum HeaderMenu_MenuGroups_Links_Link_ReferenceRelationshipInputRelationTo {
+export enum HeaderMenu_Links_Link_ReferenceRelationshipInputRelationTo {
   Page = 'page'
 }
 
@@ -6939,24 +6748,18 @@ export type MutationFooterMenu_MenuGroups_Links_LinkInput = {
 
 export type MutationHeaderMenuInput = {
   createdAt?: InputMaybe<Scalars['String']>;
-  menuGroups?: InputMaybe<Array<InputMaybe<MutationHeaderMenu_MenuGroupsInput>>>;
+  links?: InputMaybe<Array<InputMaybe<MutationHeaderMenu_LinksInput>>>;
   updatedAt?: InputMaybe<Scalars['String']>;
 };
 
-export type MutationHeaderMenu_MenuGroupsInput = {
+export type MutationHeaderMenu_LinksInput = {
   id?: InputMaybe<Scalars['String']>;
-  links?: InputMaybe<Array<InputMaybe<MutationHeaderMenu_MenuGroups_LinksInput>>>;
-  text?: InputMaybe<Scalars['String']>;
+  link?: InputMaybe<MutationHeaderMenu_Links_LinkInput>;
 };
 
-export type MutationHeaderMenu_MenuGroups_LinksInput = {
-  id?: InputMaybe<Scalars['String']>;
-  link?: InputMaybe<MutationHeaderMenu_MenuGroups_Links_LinkInput>;
-};
-
-export type MutationHeaderMenu_MenuGroups_Links_LinkInput = {
+export type MutationHeaderMenu_Links_LinkInput = {
   label: Scalars['String'];
-  reference?: InputMaybe<HeaderMenu_MenuGroups_Links_Link_ReferenceRelationshipInput>;
+  reference?: InputMaybe<HeaderMenu_Links_Link_ReferenceRelationshipInput>;
   type: Scalars['String'];
   url?: InputMaybe<Scalars['String']>;
 };
@@ -7603,6 +7406,7 @@ export const LinkFieldFragmentFragmentDoc = gql`
     value {
       ... on Page {
         slug
+        title
       }
     }
   }
@@ -7656,19 +7460,26 @@ export type FooterMenuQueryResult = Apollo.QueryResult<FooterMenuQuery, FooterMe
 export const HeaderMenuDocument = gql`
     query HeaderMenu($draft: Boolean) {
   HeaderMenu(draft: $draft) {
-    menuGroups {
-      text
-      links {
-        id
-        link {
-          ...LinkFieldFragment
+    links {
+      link {
+        label
+        type
+        url
+        reference {
+          relationTo
+          value {
+            ... on Page {
+              title
+              slug
+            }
+          }
         }
       }
       id
     }
   }
 }
-    ${LinkFieldFragmentFragmentDoc}`;
+    `;
 
 /**
  * __useHeaderMenuQuery__

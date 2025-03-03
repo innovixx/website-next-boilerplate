@@ -6,6 +6,7 @@ import type { SerializedEditorState } from 'lexical';
 import React from 'react';
 import { AppLink } from '../AppLink';
 import styles from './styles.module.scss';
+import { Link_Type } from '../../graphql/generated/schema';
 
 type NodeTypes = DefaultNodeTypes
 
@@ -22,6 +23,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 			return (
 				<AppLink
 					link={{
+						type: fields.linkType === 'internal' ? Link_Type.Internal : Link_Type.External,
 						reference: fields.doc,
 						url: fields.url,
 					}}

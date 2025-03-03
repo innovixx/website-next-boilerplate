@@ -23,6 +23,10 @@
       {
         "name": "next"
       }
+    ],
+    "rootDirs": [
+      ".",
+      "src/types/styles"
     ]
   },
   "exclude": [

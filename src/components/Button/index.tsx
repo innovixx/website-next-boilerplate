@@ -2,7 +2,6 @@
 
 import type { ElementType, HtmlHTMLAttributes } from 'react';
 import React from 'react';
-import styles from './styles.module.scss';
 import { constructClassName } from '../../utils/constructClassName';
 import type { IconType } from '../Icon';
 import { Icon } from '../Icon';
@@ -38,7 +37,6 @@ export const Button: React.FC<Props> = ({
 	style,
 	textColor,
 	title,
-	type = 'primary',
 	htmlElement: El = 'button',
 	iconPosition = 'right',
 	...rest
@@ -46,11 +44,6 @@ export const Button: React.FC<Props> = ({
 	const IconComponent = icon ? (
 		<Icon
 			icon={icon}
-			className={
-				constructClassName([
-					styles.icon,
-				])
-			}
 			fill={iconFill}
 			size={iconSize ?? 18}
 		/>
@@ -59,10 +52,6 @@ export const Button: React.FC<Props> = ({
 	return (
 		<El
 			className={constructClassName([
-				styles.button,
-				styles[type],
-				(loading ?? false) && styles.buttonLoading,
-				(disabled ?? false) && styles.buttonDisabled,
 				className,
 			])}
 			type={El === 'button' ? htmlType : undefined}
@@ -75,7 +64,6 @@ export const Button: React.FC<Props> = ({
 			{...rest}
 		>
 			<span
-				className={styles.contentSpan}
 				style={{ color: textColor }}
 			>
 				{
@@ -92,7 +80,6 @@ export const Button: React.FC<Props> = ({
 				{
 					loading === true && (
 						<span className={constructClassName([
-							styles.loadingIcon,
 						])}
 						>
 							<Icon

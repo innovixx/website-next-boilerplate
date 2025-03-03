@@ -14,17 +14,15 @@ export const FooterMenu: React.FC<Props> = ({ footerMenu }) => (
 			size="large"
 			className={styles.container}
 		>
-			<Image
-				className={styles.logo}
-				src="/images/payload.jpg"
-				alt="Payload Logo"
-				width={500}
-				height={500}
-			/>
 			<nav className={styles.nav}>
 				{
 					footerMenu?.menuGroups?.map((menuGroup) => (
 						<ul key={menuGroup.id}>
+							{
+								menuGroup.text && (
+									<p>{menuGroup.text}</p>
+								)
+							}
 							{menuGroup.links?.map((link) => (
 								<li key={link.id}>
 									<AppLink

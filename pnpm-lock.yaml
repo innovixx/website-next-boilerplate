@@ -103,8 +103,8 @@ importers:
         specifier: ^3.0.9
         version: 3.0.9(jiti@1.17.1)
       '@innovixx/stylelint-config':
-        specifier: ^1.0.0
-        version: 1.0.0(typescript@5.7.3)
+        specifier: 1.0.1-alpha.1
+        version: 1.0.1-alpha.1(typescript@5.7.3)
       '@types/color':
         specifier: ^4.2.0
         version: 4.2.0
@@ -141,12 +141,9 @@ importers:
       nodemon:
         specifier: ^3.1.4
         version: 3.1.9
-      sass:
-        specifier: ^1.80.5
-        version: 1.85.1
       stylelint:
-        specifier: ^16.14.0
-        version: 16.14.1(typescript@5.7.3)
+        specifier: ^16.15.0
+        version: 16.15.0(typescript@5.7.3)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.17.19)(typescript@5.7.3)
@@ -1324,8 +1321,9 @@ packages:
       react-dom: ^18.3.1
       react-hook-form: ^7.49.3
 
-  '@innovixx/stylelint-config@1.0.0':
-    resolution: {integrity: sha512-nrdLdCa5Ls+iv8M2wcKjphNVwGkiI+uu3nb8T70vbXUV1kyLl06mA3BqyDjHa/EYESRyJkRfdv4l6MI4LaUhAA==, tarball: https://npm.pkg.github.com/download/@innovixx/stylelint-config/1.0.0/b1324bd330a01d0959701bc77253d191bdc3ba06}
+  '@innovixx/stylelint-config@1.0.1-alpha.1':
+    resolution: {integrity: sha512-HWuH3ErHTjBtndvlLXhDoXvYRsOXpCCEOhxpUwdvOXTTCL/RCWXXir6d+65PvC4d69i68EBYtviGmXHGhT7q8g==, tarball: https://npm.pkg.github.com/download/@innovixx/stylelint-config/1.0.1-alpha.1/6023ad189f8c723ce2d1c0e78e049c8b8878f514}
+    engines: {node: '>=18.12.0'}
 
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
@@ -2800,8 +2798,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-react-hooks@5.1.0:
-    resolution: {integrity: sha512-mpJRtPgHN2tNAvZ35AMfqeB3Xqeo273QxrHJsbBEPWODRM4r0yB6jfoROqKEYrOn27UtRPpcpHc2UqyBSuUNTw==}
+  eslint-plugin-react-hooks@5.2.0:
+    resolution: {integrity: sha512-+f15FfK64YQwZdJNELETdn5ibXEUQmW1DZL6KXhNnc2heoy/sg9VJJeT7n8TlMWouzWqSWavFkIhHyIbIAEapg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -4864,8 +4862,8 @@ packages:
     peerDependencies:
       stylelint: ^16.0.2
 
-  stylelint@16.14.1:
-    resolution: {integrity: sha512-oqCL7AC3786oTax35T/nuLL8p2C3k/8rHKAooezrPGRvUX0wX+qqs5kMWh5YYT4PHQgVDobHT4tw55WgpYG6Sw==}
+  stylelint@16.15.0:
+    resolution: {integrity: sha512-OK6Rs7EPdcdmjqiDycadZY4fw3f5/TC1X6/tGjnF3OosbwCeNs7nG+79MCAtjEg7ckwqTJTsku08e0Rmaz5nUw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -6828,7 +6826,7 @@ snapshots:
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.19.0(jiti@1.17.1))
       eslint-plugin-n: 17.15.1(eslint@9.19.0(jiti@1.17.1))
       eslint-plugin-react: 7.37.4(eslint@9.19.0(jiti@1.17.1))
-      eslint-plugin-react-hooks: 5.1.0(eslint@9.19.0(jiti@1.17.1))
+      eslint-plugin-react-hooks: 5.2.0(eslint@9.19.0(jiti@1.17.1))
       eslint-plugin-react-refresh: 0.4.19(eslint@9.19.0(jiti@1.17.1))
       eslint-plugin-sort-export-all: 1.4.1(eslint@9.19.0(jiti@1.17.1))
       eslint-plugin-sort-keys-fix: 1.1.2
@@ -6856,15 +6854,15 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@innovixx/stylelint-config@1.0.0(typescript@5.7.3)':
+  '@innovixx/stylelint-config@1.0.1-alpha.1(typescript@5.7.3)':
     dependencies:
       prettier: 3.5.2
       sass: 1.85.1
-      stylelint: 16.14.1(typescript@5.7.3)
-      stylelint-config-recommended: 15.0.0(stylelint@16.14.1(typescript@5.7.3))
-      stylelint-order: 6.0.4(stylelint@16.14.1(typescript@5.7.3))
-      stylelint-prettier: 5.0.3(prettier@3.5.2)(stylelint@16.14.1(typescript@5.7.3))
-      stylelint-scss: 6.11.1(stylelint@16.14.1(typescript@5.7.3))
+      stylelint: 16.15.0(typescript@5.7.3)
+      stylelint-config-recommended: 15.0.0(stylelint@16.15.0(typescript@5.7.3))
+      stylelint-order: 6.0.4(stylelint@16.15.0(typescript@5.7.3))
+      stylelint-prettier: 5.0.3(prettier@3.5.2)(stylelint@16.15.0(typescript@5.7.3))
+      stylelint-scss: 6.11.1(stylelint@16.15.0(typescript@5.7.3))
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8783,7 +8781,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@5.1.0(eslint@9.19.0(jiti@1.17.1)):
+  eslint-plugin-react-hooks@5.2.0(eslint@9.19.0(jiti@1.17.1)):
     dependencies:
       eslint: 9.19.0(jiti@1.17.1)
 
@@ -11165,23 +11163,23 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.26.9
 
-  stylelint-config-recommended@15.0.0(stylelint@16.14.1(typescript@5.7.3)):
+  stylelint-config-recommended@15.0.0(stylelint@16.15.0(typescript@5.7.3)):
     dependencies:
-      stylelint: 16.14.1(typescript@5.7.3)
+      stylelint: 16.15.0(typescript@5.7.3)
 
-  stylelint-order@6.0.4(stylelint@16.14.1(typescript@5.7.3)):
+  stylelint-order@6.0.4(stylelint@16.15.0(typescript@5.7.3)):
     dependencies:
       postcss: 8.5.3
       postcss-sorting: 8.0.2(postcss@8.5.3)
-      stylelint: 16.14.1(typescript@5.7.3)
+      stylelint: 16.15.0(typescript@5.7.3)
 
-  stylelint-prettier@5.0.3(prettier@3.5.2)(stylelint@16.14.1(typescript@5.7.3)):
+  stylelint-prettier@5.0.3(prettier@3.5.2)(stylelint@16.15.0(typescript@5.7.3)):
     dependencies:
       prettier: 3.5.2
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.14.1(typescript@5.7.3)
+      stylelint: 16.15.0(typescript@5.7.3)
 
-  stylelint-scss@6.11.1(stylelint@16.14.1(typescript@5.7.3)):
+  stylelint-scss@6.11.1(stylelint@16.15.0(typescript@5.7.3)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
@@ -11191,9 +11189,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.14.1(typescript@5.7.3)
+      stylelint: 16.15.0(typescript@5.7.3)
 
-  stylelint@16.14.1(typescript@5.7.3):
+  stylelint@16.15.0(typescript@5.7.3):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.4(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-tokenizer': 3.0.3
@@ -11380,7 +11378,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.8.1
+      get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
 

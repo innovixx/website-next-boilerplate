@@ -1,20 +1,25 @@
 import { gql } from 'graphql-request';
-import { LINK_FIELD } from '../../fragments/fields';
 
 export const HEADER_MENU = gql`
-	query HeaderMenu($draft: Boolean) {
-		HeaderMenu(draft: $draft) {
-			menuGroups {
-				text
-				links {
-					id
-					link {
-						...LinkFieldFragment
-					}
-				}
-				id
-			}
-		}
-	}
-	${LINK_FIELD}
+  query HeaderMenu($draft: Boolean) {
+    HeaderMenu(draft: $draft) {
+      links {
+        link {
+          label
+          type
+          url
+          reference {
+            relationTo
+            value {
+              ... on Page {
+                title
+                slug
+              }
+            }
+          }
+        }
+        id
+      }
+    }
+  }
 `;

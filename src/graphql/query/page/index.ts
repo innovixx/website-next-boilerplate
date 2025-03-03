@@ -8,9 +8,6 @@ export const PAGES = gql`
         id
         title
         description
-        image {
-          ...MediaFieldFragment
-        }
         header {
           type
           image {

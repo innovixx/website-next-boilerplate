@@ -10,8 +10,6 @@ export type ContentBlockFragmentFragment = { __typename?: 'Content', content?: a
 
 export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null };
 
-export type LinkFieldFragmentFragment = { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null, title?: string | null } | null } | null };
-
 export type MediaFieldFragmentFragment = { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null };
 
 export type FooterMenuQueryVariables = Exact<{
@@ -19,7 +17,7 @@ export type FooterMenuQueryVariables = Exact<{
 }>;
 
 
-export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', id?: string | null, text?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', slug?: string | null, title?: string | null } | null } | null } | null }> | null }> | null } | null };
+export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', text?: string | null, id?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null }> | null } | null };
 
 export type HeaderMenuQueryVariables = Exact<{
   draft?: InputMaybe<Scalars['Boolean']>;
@@ -37,7 +35,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', Pages?: { __typename?: 'Pages', docs?: Array<{ __typename?: 'Page', id: string, title?: string | null, description?: any | null, slug?: string | null, updatedAt?: any | null, createdAt?: any | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null, header?: { __typename?: 'Page_Header', type?: Page_Header_Type | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null, layout?: { __typename?: 'Page_Layout', blocks?: Array<{ __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null } | { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null }> | null } | null, meta?: { __typename?: 'Page_Meta', title?: string | null, description?: string | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null } | null> | null } | null };
+export type PagesQuery = { __typename?: 'Query', Pages?: { __typename?: 'Pages', docs?: Array<{ __typename?: 'Page', id: string, title?: string | null, description?: any | null, slug?: string | null, updatedAt?: any | null, createdAt?: any | null, header?: { __typename?: 'Page_Header', type?: Page_Header_Type | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null, layout?: { __typename?: 'Page_Layout', blocks?: Array<{ __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null } | { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null }> | null } | null, meta?: { __typename?: 'Page_Meta', title?: string | null, description?: string | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null } | null> | null } | null };
 
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -3766,7 +3764,6 @@ export type Page = {
   description?: Maybe<Scalars['JSON']>;
   header?: Maybe<Page_Header>;
   id: Scalars['String'];
-  image?: Maybe<Media>;
   isPlaceholder?: Maybe<Scalars['Boolean']>;
   layout?: Maybe<Page_Layout>;
   meta?: Maybe<Page_Meta>;
@@ -4759,7 +4756,6 @@ export type PageVersion_Version = {
   createdAt?: Maybe<Scalars['DateTime']>;
   description?: Maybe<Scalars['JSON']>;
   header?: Maybe<PageVersion_Version_Header>;
-  image?: Maybe<Media>;
   isPlaceholder?: Maybe<Scalars['Boolean']>;
   layout?: Maybe<PageVersion_Version_Layout>;
   meta?: Maybe<PageVersion_Version_Meta>;
@@ -4911,15 +4907,6 @@ export type Page_Id_Operator = {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type Page_Image_Operator = {
-  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-  equals?: InputMaybe<Scalars['JSON']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-  not_equals?: InputMaybe<Scalars['JSON']>;
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-};
-
 export type Page_IsPlaceholder_Operator = {
   equals?: InputMaybe<Scalars['Boolean']>;
   exists?: InputMaybe<Scalars['Boolean']>;
@@ -5001,7 +4988,6 @@ export type Page_Where = {
   header__image?: InputMaybe<Page_Header__Image_Operator>;
   header__type?: InputMaybe<Page_Header__Type_Operator>;
   id?: InputMaybe<Page_Id_Operator>;
-  image?: InputMaybe<Page_Image_Operator>;
   isPlaceholder?: InputMaybe<Page_IsPlaceholder_Operator>;
   meta__description?: InputMaybe<Page_Meta__Description_Operator>;
   meta__image?: InputMaybe<Page_Meta__Image_Operator>;
@@ -5021,7 +5007,6 @@ export type Page_Where_And = {
   header__image?: InputMaybe<Page_Header__Image_Operator>;
   header__type?: InputMaybe<Page_Header__Type_Operator>;
   id?: InputMaybe<Page_Id_Operator>;
-  image?: InputMaybe<Page_Image_Operator>;
   isPlaceholder?: InputMaybe<Page_IsPlaceholder_Operator>;
   meta__description?: InputMaybe<Page_Meta__Description_Operator>;
   meta__image?: InputMaybe<Page_Meta__Image_Operator>;
@@ -5041,7 +5026,6 @@ export type Page_Where_Or = {
   header__image?: InputMaybe<Page_Header__Image_Operator>;
   header__type?: InputMaybe<Page_Header__Type_Operator>;
   id?: InputMaybe<Page_Id_Operator>;
-  image?: InputMaybe<Page_Image_Operator>;
   isPlaceholder?: InputMaybe<Page_IsPlaceholder_Operator>;
   meta__description?: InputMaybe<Page_Meta__Description_Operator>;
   meta__image?: InputMaybe<Page_Meta__Image_Operator>;
@@ -6847,7 +6831,6 @@ export type MutationPageInput = {
   createdAt?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['JSON']>;
   header?: InputMaybe<MutationPage_HeaderInput>;
-  image?: InputMaybe<Scalars['String']>;
   isPlaceholder?: InputMaybe<Scalars['Boolean']>;
   layout?: InputMaybe<MutationPage_LayoutInput>;
   meta?: InputMaybe<MutationPage_MetaInput>;
@@ -6861,7 +6844,6 @@ export type MutationPageUpdateInput = {
   createdAt?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['JSON']>;
   header?: InputMaybe<MutationPageUpdate_HeaderInput>;
-  image?: InputMaybe<Scalars['String']>;
   isPlaceholder?: InputMaybe<Scalars['Boolean']>;
   layout?: InputMaybe<MutationPageUpdate_LayoutInput>;
   meta?: InputMaybe<MutationPageUpdate_MetaInput>;
@@ -7175,15 +7157,6 @@ export type VersionsPage_Version__Description_Operator = {
   not_equals?: InputMaybe<Scalars['JSON']>;
 };
 
-export type VersionsPage_Version__Image_Operator = {
-  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-  equals?: InputMaybe<Scalars['JSON']>;
-  exists?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-  not_equals?: InputMaybe<Scalars['JSON']>;
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
-};
-
 export type VersionsPage_Version__IsPlaceholder_Operator = {
   equals?: InputMaybe<Scalars['Boolean']>;
   exists?: InputMaybe<Scalars['Boolean']>;
@@ -7269,7 +7242,6 @@ export type VersionsPage_Where = {
   version___status?: InputMaybe<VersionsPage_Version___Status_Operator>;
   version__createdAt?: InputMaybe<VersionsPage_Version__CreatedAt_Operator>;
   version__description?: InputMaybe<VersionsPage_Version__Description_Operator>;
-  version__image?: InputMaybe<VersionsPage_Version__Image_Operator>;
   version__isPlaceholder?: InputMaybe<VersionsPage_Version__IsPlaceholder_Operator>;
   version__meta__description?: InputMaybe<VersionsPage_Version__Meta__Description_Operator>;
   version__meta__image?: InputMaybe<VersionsPage_Version__Meta__Image_Operator>;
@@ -7293,7 +7265,6 @@ export type VersionsPage_Where_And = {
   version___status?: InputMaybe<VersionsPage_Version___Status_Operator>;
   version__createdAt?: InputMaybe<VersionsPage_Version__CreatedAt_Operator>;
   version__description?: InputMaybe<VersionsPage_Version__Description_Operator>;
-  version__image?: InputMaybe<VersionsPage_Version__Image_Operator>;
   version__isPlaceholder?: InputMaybe<VersionsPage_Version__IsPlaceholder_Operator>;
   version__meta__description?: InputMaybe<VersionsPage_Version__Meta__Description_Operator>;
   version__meta__image?: InputMaybe<VersionsPage_Version__Meta__Image_Operator>;
@@ -7317,7 +7288,6 @@ export type VersionsPage_Where_Or = {
   version___status?: InputMaybe<VersionsPage_Version___Status_Operator>;
   version__createdAt?: InputMaybe<VersionsPage_Version__CreatedAt_Operator>;
   version__description?: InputMaybe<VersionsPage_Version__Description_Operator>;
-  version__image?: InputMaybe<VersionsPage_Version__Image_Operator>;
   version__isPlaceholder?: InputMaybe<VersionsPage_Version__IsPlaceholder_Operator>;
   version__meta__description?: InputMaybe<VersionsPage_Version__Meta__Description_Operator>;
   version__meta__image?: InputMaybe<VersionsPage_Version__Meta__Image_Operator>;
@@ -7397,38 +7367,33 @@ export const ImageBlockFragmentFragmentDoc = gql`
   imageSize
 }
     ${MediaFieldFragmentFragmentDoc}`;
-export const LinkFieldFragmentFragmentDoc = gql`
-    fragment LinkFieldFragment on Link {
-  type
-  label
-  reference {
-    relationTo
-    value {
-      ... on Page {
-        slug
-        title
-      }
-    }
-  }
-  url
-}
-    `;
 export const FooterMenuDocument = gql`
     query FooterMenu($draft: Boolean) {
   FooterMenu(draft: $draft) {
     menuGroups {
-      id
+      text
       links {
         id
         link {
-          ...LinkFieldFragment
+          type
+          label
+          reference {
+            value {
+              ... on Page {
+                title
+                slug
+              }
+            }
+            relationTo
+          }
+          url
         }
       }
-      text
+      id
     }
   }
 }
-    ${LinkFieldFragmentFragmentDoc}`;
+    `;
 
 /**
  * __useFooterMenuQuery__
@@ -7515,9 +7480,6 @@ export const PagesDocument = gql`
       id
       title
       description
-      image {
-        ...MediaFieldFragment
-      }
       header {
         type
         image {

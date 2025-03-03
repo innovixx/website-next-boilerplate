@@ -28,9 +28,10 @@ const getPageData = async (slug: string, preview?: boolean): Promise<PagesQuery 
 	return pageData;
 };
 
-export default async function Page({ params, searchParams }: Props): Promise<JSX.Element> {
+const Page = async ({ params, searchParams }: Props): Promise<JSX.Element> => {
 	const { slug } = await params;
 	const { preview } = await searchParams;
+
 	const pageSlug = !slug ? 'home' : slug;
 
 	const pageData = await getPageData(pageSlug, preview === 'true');
@@ -56,7 +57,7 @@ export default async function Page({ params, searchParams }: Props): Promise<JSX
 			<RefreshRouteOnSave />
 		</div>
 	);
-}
+};
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
 	const { slug } = await params;
@@ -71,15 +72,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
 	const page = pageData.Pages?.docs?.[0];
 
-	return generateMeta({
-		doc: {
-			...page,
-			meta: {
-				description: '',
-				image: null,
-				title: '',
-			},
-			slug: pageSlug ?? null,
-		},
-	});
+	return generateMeta({ doc: page as any });
 }
+
+export default Page;

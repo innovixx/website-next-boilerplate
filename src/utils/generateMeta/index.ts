@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { mergeOpenGraph } from '../mergeOpenGraph';
 import type { Media } from '../../graphql/generated/schema';
 
-
 const getImageURL = (image?: Media | null): string => {
 	const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
 	const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -12,11 +11,7 @@ const getImageURL = (image?: Media | null): string => {
 	if (image && typeof image === 'object' && 'url' in image) {
 		const ogUrl = image.sizes?.card?.url;
 
-		if (ogUrl != null && ogUrl !== '') {
-			url = `${serverUrl}${ogUrl}`;
-		} else if (image.url != null && image.url !== '') {
-			url = `${serverUrl}${image.url}`;
-		}
+		url = ogUrl ? serverUrl + ogUrl : `${serverUrl}${image.url}`;
 	}
 
 	return url;
@@ -28,6 +23,7 @@ export const generateMeta = async (args: {
 			description: string;
 			image: Media | null;
 			title: string;
+			noIndex?: boolean
 		}
 		slug: string | null;
 	} | null
@@ -37,7 +33,7 @@ export const generateMeta = async (args: {
 
 	const ogImage = getImageURL(doc?.meta.image);
 
-	const title = doc?.meta.title ?? '';
+	const title = doc?.meta.title ? `${doc.meta.title}` : '';
 
 	return {
 		description: doc?.meta.description,
@@ -51,8 +47,9 @@ export const generateMeta = async (args: {
 				]
 				: undefined,
 			title,
-			url: Array.isArray(doc?.slug) ? doc.slug.join('/') : '/',
+			url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
 		}),
 		title,
+		robots: doc?.meta.noIndex ? 'noindex, nofollow' : undefined,
 	};
 };

@@ -1,11 +1,11 @@
-@use'../../../styles/' as *;
+@use '../../../styles/' as *;
 
 .container {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 base(2);
   width: 100%;
-  
+
   @include queries(md) {
     padding: 0 base(0.5);
   }

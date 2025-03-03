@@ -1,14 +1,14 @@
-@use "../../../../styles/index.scss" as *;
+@use '../../../../styles/index.scss' as *;
 
 .container {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .nav {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: base(0.5);
   ul {
     list-style-type: none;
@@ -16,7 +16,7 @@
 }
 
 .logo {
-  width: 75px;
-  height: 75px;
+  height: base(3.75);
   object-fit: cover;
+  width: base(3.75);
 }

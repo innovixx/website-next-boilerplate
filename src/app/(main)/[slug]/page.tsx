@@ -2,10 +2,11 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { cmsClient } from '../../../graphql';
-import type { PagesQuery, PagesQueryVariables } from '../../../graphql/generated/schema';
+import type { Page_Meta, PagesQuery, PagesQueryVariables } from '../../../graphql/generated/schema';
 import { PAGES } from '../../../graphql/query/page';
 import { RefreshRouteOnSave, RenderBlocks } from '../../../components';
 import { PageHeader } from '../../../sections';
+import type { GenerateMetaArgs } from '../../../utils/generateMeta';
 import { generateMeta } from '../../../utils/generateMeta';
 
 interface Props {
@@ -72,7 +73,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
 	const page = pageData.Pages?.docs?.[0];
 
-	return generateMeta({ doc: page as any });
+	return generateMeta({
+		doc: {
+			meta: page?.meta,
+			slug: page?.slug ?? null,
+		},
+	} as GenerateMetaArgs);
 }
 
 export default Page;

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { mergeOpenGraph } from '../mergeOpenGraph';
-import type { Media } from '../../graphql/generated/schema';
+import type { Media, Page_Meta } from '../../graphql/generated/schema';
 
 const getImageURL = (image?: Media | null): string => {
 	const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
@@ -17,18 +17,14 @@ const getImageURL = (image?: Media | null): string => {
 	return url;
 };
 
-export const generateMeta = async (args: {
+export interface GenerateMetaArgs {
 	doc: {
-		meta: {
-			description: string;
-			image: Media | null;
-			title: string;
-			noIndex?: boolean
-		}
+		meta: Page_Meta;
 		slug: string | null;
-	} | null
+	} | null;
+}
 
-}): Promise<Metadata> => {
+export const generateMeta = async (args: GenerateMetaArgs): Promise<Metadata> => {
 	const { doc } = args;
 
 	const ogImage = getImageURL(doc?.meta.image);
@@ -38,7 +34,6 @@ export const generateMeta = async (args: {
 	return {
 		description: doc?.meta.description,
 		openGraph: mergeOpenGraph({
-			description: doc?.meta.description ?? '',
 			images: ogImage
 				? [
 					{

@@ -4,7 +4,6 @@ export declare const container: string;
 export declare const dark: string;
 export declare const lg: string;
 export declare const light: string;
-export declare const logo: string;
 export declare const md: string;
 export declare const nav: string;
 export declare const sm: string;

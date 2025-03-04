@@ -1,28 +1,30 @@
 import { gql } from 'graphql-request';
 
 export const FOOTER_MENU = gql`
-  query FooterMenu($draft: Boolean) {
+	query FooterMenu($draft: Boolean) {
 		FooterMenu(draft: $draft) {
 			menuGroups {
-				text
-				links {
-					id
-					link {
-						type
-						label
-						reference {
-							value {
-								... on Page {
-									title
-									slug
+				id
+				menuGroup {
+					title
+					links {
+						id
+						link {
+							label
+							reference {
+								value {
+									... on Page {
+										title
+										slug
+									}
 								}
+								relationTo
 							}
-							relationTo
+							url
+							type
 						}
-						url
 					}
 				}
-				id
 			}
 		}
 	}

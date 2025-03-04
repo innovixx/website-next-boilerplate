@@ -9,14 +9,7 @@
 }
 
 .nav {
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-}
-
-.logo {
-  height: base(3.75);
-  object-fit: cover;
-  width: base(3.75);
+  display: flex;
+  flex-direction: row;
+  gap: base(0.5);
 }

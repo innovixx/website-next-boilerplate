@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import type { FooterMenuQuery } from '../../../../graphql/generated/schema';
 import { AppLink, Container } from '../../../../components';
 import styles from './styles.module.scss';
@@ -17,20 +16,22 @@ export const FooterMenu: React.FC<Props> = ({ footerMenu }) => (
 			<nav className={styles.nav}>
 				{
 					footerMenu?.menuGroups?.map((menuGroup) => (
-						<ul key={menuGroup.id}>
+						<div key={menuGroup.id}>
 							{
-								menuGroup.text && (
-									<p>{menuGroup.text}</p>
+								menuGroup.menuGroup?.title && (
+									<p>{menuGroup.menuGroup.title}</p>
 								)
 							}
-							{menuGroup.links?.map((link) => (
-								<li key={link.id}>
-									<AppLink
-										link={link?.link}
-									/>
-								</li>
-							))}
-						</ul>
+							<ul>
+								{menuGroup.menuGroup?.links?.map((link) => (
+									<li key={link.id}>
+										<AppLink
+											link={link?.link}
+										/>
+									</li>
+								))}
+							</ul>
+						</div>
 					))
 				}
 			</nav>

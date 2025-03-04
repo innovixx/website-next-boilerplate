@@ -17,7 +17,7 @@ export type FooterMenuQueryVariables = Exact<{
 }>;
 
 
-export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', text?: string | null, id?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_Links', id?: string | null, link?: { __typename?: 'Link', type?: Link_Type | null, label?: string | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null }> | null } | null };
+export type FooterMenuQuery = { __typename?: 'Query', FooterMenu?: { __typename?: 'FooterMenu', menuGroups?: Array<{ __typename?: 'FooterMenu_MenuGroups', id?: string | null, menuGroup?: { __typename?: 'FooterMenu_MenuGroups_MenuGroup', title?: string | null, links?: Array<{ __typename?: 'FooterMenu_MenuGroups_MenuGroup_Links', id?: string | null, link?: { __typename?: 'Link', label?: string | null, url?: string | null, type?: Link_Type | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null } | null }> | null } | null };
 
 export type HeaderMenuQueryVariables = Exact<{
   draft?: InputMaybe<Scalars['Boolean']>;
@@ -139,8 +139,7 @@ export type FooterMenuDocAccessFields_MenuGroups_Delete = {
 export type FooterMenuDocAccessFields_MenuGroups_Fields = {
   __typename?: 'FooterMenuDocAccessFields_menuGroups_Fields';
   id?: Maybe<FooterMenuDocAccessFields_MenuGroups_Id>;
-  links?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links>;
-  text?: Maybe<FooterMenuDocAccessFields_MenuGroups_Text>;
+  menuGroup?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup>;
 };
 
 export type FooterMenuDocAccessFields_MenuGroups_Read = {
@@ -181,243 +180,278 @@ export type FooterMenuDocAccessFields_MenuGroups_Id_Update = {
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Delete>;
-  fields?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Fields>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Delete>;
+  fields?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Fields>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Fields = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_Fields';
-  id?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Id>;
-  link?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Fields = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_Fields';
+  links?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links>;
+  title?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Id = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_id';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Id_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Id_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Id_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Id_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Delete>;
+  fields?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Fields>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Id_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_id_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Id_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_id_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Id_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_id_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Fields = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_Fields';
+  id?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id>;
+  link?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link>;
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Id_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_id_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Delete>;
-  fields?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Fields>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_id';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_id_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_id_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Fields = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_Fields';
-  label?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Label>;
-  reference?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference>;
-  type?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Type>;
-  url?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Url>;
-};
-
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_id_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Id_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_id_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Label = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_label';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Delete>;
+  fields?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Fields>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_label_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_label_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_label_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Fields = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_Fields';
+  label?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label>;
+  reference?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference>;
+  type?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type>;
+  url?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url>;
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Label_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_label_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_reference';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_label';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_reference_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_label_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_reference_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_label_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_reference_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_label_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Reference_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_reference_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Label_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_label_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Type = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_type';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_reference';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_type_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_reference_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_type_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_reference_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_type_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_reference_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Type_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_type_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Reference_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_reference_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Url = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_url';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_type';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_url_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_type_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_url_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_type_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_url_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_type_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Links_Link_Url_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_links_link_url_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Type_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_type_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Text = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_text';
-  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_Text_Create>;
-  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_Text_Delete>;
-  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_Text_Read>;
-  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_Text_Update>;
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_url';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Update>;
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Text_Create = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_text_Create';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_url_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Text_Delete = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_text_Delete';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_url_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Text_Read = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_text_Read';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_url_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuDocAccessFields_MenuGroups_Text_Update = {
-  __typename?: 'FooterMenuDocAccessFields_menuGroups_text_Update';
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Links_Link_Url_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_links_link_url_Update';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_title';
+  create?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Create>;
+  delete?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Delete>;
+  read?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Read>;
+  update?: Maybe<FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Update>;
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Create = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_title_Create';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Delete = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_title_Delete';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Read = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_title_Read';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuDocAccessFields_MenuGroups_MenuGroup_Title_Update = {
+  __typename?: 'FooterMenuDocAccessFields_menuGroups_menuGroup_title_Update';
   permission: Scalars['Boolean'];
 };
 
@@ -506,8 +540,7 @@ export type FooterMenuFields_MenuGroups_Delete = {
 export type FooterMenuFields_MenuGroups_Fields = {
   __typename?: 'FooterMenuFields_menuGroups_Fields';
   id?: Maybe<FooterMenuFields_MenuGroups_Id>;
-  links?: Maybe<FooterMenuFields_MenuGroups_Links>;
-  text?: Maybe<FooterMenuFields_MenuGroups_Text>;
+  menuGroup?: Maybe<FooterMenuFields_MenuGroups_MenuGroup>;
 };
 
 export type FooterMenuFields_MenuGroups_Read = {
@@ -548,243 +581,278 @@ export type FooterMenuFields_MenuGroups_Id_Update = {
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links = {
-  __typename?: 'FooterMenuFields_menuGroups_links';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Delete>;
-  fields?: Maybe<FooterMenuFields_MenuGroups_Links_Fields>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Delete>;
+  fields?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Fields>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Fields = {
-  __typename?: 'FooterMenuFields_menuGroups_links_Fields';
-  id?: Maybe<FooterMenuFields_MenuGroups_Links_Id>;
-  link?: Maybe<FooterMenuFields_MenuGroups_Links_Link>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Fields = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_Fields';
+  links?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links>;
+  title?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Title>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Id = {
-  __typename?: 'FooterMenuFields_menuGroups_links_id';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Id_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Id_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Id_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Id_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Delete>;
+  fields?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Fields>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Id_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_id_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Id_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_id_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Id_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_id_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Fields = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_Fields';
+  id?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Id>;
+  link?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link>;
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Id_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_id_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Delete>;
-  fields?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Fields>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Id = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_id';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_id_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_id_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Fields = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_Fields';
-  label?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Label>;
-  reference?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Reference>;
-  type?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Type>;
-  url?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Url>;
-};
-
-export type FooterMenuFields_MenuGroups_Links_Link_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_id_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Id_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_id_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Label = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_label';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Label_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Label_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Label_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Label_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Delete>;
+  fields?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Fields>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Label_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_label_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Label_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_label_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Label_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_label_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Fields = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_Fields';
+  label?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label>;
+  reference?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference>;
+  type?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type>;
+  url?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url>;
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Label_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_label_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Reference = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_reference';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Reference_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Reference_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Reference_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Reference_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_label';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Reference_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_reference_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_label_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Reference_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_reference_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_label_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Reference_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_reference_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_label_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Reference_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_reference_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Label_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_label_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Type = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_type';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Type_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Type_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Type_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Type_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_reference';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Type_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_type_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_reference_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Type_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_type_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_reference_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Type_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_type_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_reference_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Type_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_type_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Reference_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_reference_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Url = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_url';
-  create?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Url_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Url_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Url_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Links_Link_Url_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_type';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Url_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_url_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_type_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Url_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_url_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_type_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Url_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_url_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_type_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Links_Link_Url_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_links_link_url_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Type_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_type_Update';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Text = {
-  __typename?: 'FooterMenuFields_menuGroups_text';
-  create?: Maybe<FooterMenuFields_MenuGroups_Text_Create>;
-  delete?: Maybe<FooterMenuFields_MenuGroups_Text_Delete>;
-  read?: Maybe<FooterMenuFields_MenuGroups_Text_Read>;
-  update?: Maybe<FooterMenuFields_MenuGroups_Text_Update>;
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_url';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Update>;
 };
 
-export type FooterMenuFields_MenuGroups_Text_Create = {
-  __typename?: 'FooterMenuFields_menuGroups_text_Create';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_url_Create';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Text_Delete = {
-  __typename?: 'FooterMenuFields_menuGroups_text_Delete';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_url_Delete';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Text_Read = {
-  __typename?: 'FooterMenuFields_menuGroups_text_Read';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_url_Read';
   permission: Scalars['Boolean'];
 };
 
-export type FooterMenuFields_MenuGroups_Text_Update = {
-  __typename?: 'FooterMenuFields_menuGroups_text_Update';
+export type FooterMenuFields_MenuGroups_MenuGroup_Links_Link_Url_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_links_link_url_Update';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Title = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_title';
+  create?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Title_Create>;
+  delete?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Title_Delete>;
+  read?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Title_Read>;
+  update?: Maybe<FooterMenuFields_MenuGroups_MenuGroup_Title_Update>;
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Title_Create = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_title_Create';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Title_Delete = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_title_Delete';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Title_Read = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_title_Read';
+  permission: Scalars['Boolean'];
+};
+
+export type FooterMenuFields_MenuGroups_MenuGroup_Title_Update = {
+  __typename?: 'FooterMenuFields_menuGroups_menuGroup_title_Update';
   permission: Scalars['Boolean'];
 };
 
@@ -843,22 +911,27 @@ export type FooterMenuUpdateDocAccess = {
 export type FooterMenu_MenuGroups = {
   __typename?: 'FooterMenu_MenuGroups';
   id?: Maybe<Scalars['String']>;
-  links?: Maybe<Array<FooterMenu_MenuGroups_Links>>;
-  text?: Maybe<Scalars['String']>;
+  menuGroup?: Maybe<FooterMenu_MenuGroups_MenuGroup>;
 };
 
-export type FooterMenu_MenuGroups_Links = {
-  __typename?: 'FooterMenu_MenuGroups_Links';
+export type FooterMenu_MenuGroups_MenuGroup = {
+  __typename?: 'FooterMenu_MenuGroups_MenuGroup';
+  links?: Maybe<Array<FooterMenu_MenuGroups_MenuGroup_Links>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type FooterMenu_MenuGroups_MenuGroup_Links = {
+  __typename?: 'FooterMenu_MenuGroups_MenuGroup_Links';
   id?: Maybe<Scalars['String']>;
   link?: Maybe<Link>;
 };
 
-export type FooterMenu_MenuGroups_Links_Link_ReferenceRelationshipInput = {
-  relationTo?: InputMaybe<FooterMenu_MenuGroups_Links_Link_ReferenceRelationshipInputRelationTo>;
+export type FooterMenu_MenuGroups_MenuGroup_Links_Link_ReferenceRelationshipInput = {
+  relationTo?: InputMaybe<FooterMenu_MenuGroups_MenuGroup_Links_Link_ReferenceRelationshipInputRelationTo>;
   value?: InputMaybe<Scalars['JSON']>;
 };
 
-export enum FooterMenu_MenuGroups_Links_Link_ReferenceRelationshipInputRelationTo {
+export enum FooterMenu_MenuGroups_MenuGroup_Links_Link_ReferenceRelationshipInputRelationTo {
   Page = 'page'
 }
 
@@ -6714,18 +6787,22 @@ export type MutationFooterMenuInput = {
 
 export type MutationFooterMenu_MenuGroupsInput = {
   id?: InputMaybe<Scalars['String']>;
-  links?: InputMaybe<Array<InputMaybe<MutationFooterMenu_MenuGroups_LinksInput>>>;
-  text: Scalars['String'];
+  menuGroup?: InputMaybe<MutationFooterMenu_MenuGroups_MenuGroupInput>;
 };
 
-export type MutationFooterMenu_MenuGroups_LinksInput = {
+export type MutationFooterMenu_MenuGroups_MenuGroupInput = {
+  links?: InputMaybe<Array<InputMaybe<MutationFooterMenu_MenuGroups_MenuGroup_LinksInput>>>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type MutationFooterMenu_MenuGroups_MenuGroup_LinksInput = {
   id?: InputMaybe<Scalars['String']>;
-  link?: InputMaybe<MutationFooterMenu_MenuGroups_Links_LinkInput>;
+  link?: InputMaybe<MutationFooterMenu_MenuGroups_MenuGroup_Links_LinkInput>;
 };
 
-export type MutationFooterMenu_MenuGroups_Links_LinkInput = {
+export type MutationFooterMenu_MenuGroups_MenuGroup_Links_LinkInput = {
   label: Scalars['String'];
-  reference?: InputMaybe<FooterMenu_MenuGroups_Links_Link_ReferenceRelationshipInput>;
+  reference?: InputMaybe<FooterMenu_MenuGroups_MenuGroup_Links_Link_ReferenceRelationshipInput>;
   type: Scalars['String'];
   url?: InputMaybe<Scalars['String']>;
 };
@@ -7371,25 +7448,27 @@ export const FooterMenuDocument = gql`
     query FooterMenu($draft: Boolean) {
   FooterMenu(draft: $draft) {
     menuGroups {
-      text
-      links {
-        id
-        link {
-          type
-          label
-          reference {
-            value {
-              ... on Page {
-                title
-                slug
+      id
+      menuGroup {
+        title
+        links {
+          id
+          link {
+            label
+            reference {
+              value {
+                ... on Page {
+                  title
+                  slug
+                }
               }
+              relationTo
             }
-            relationTo
+            url
+            type
           }
-          url
         }
       }
-      id
     }
   }
 }

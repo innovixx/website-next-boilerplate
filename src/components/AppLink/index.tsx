@@ -9,6 +9,7 @@ type Props = Omit<LinkProps, 'href'> & {
 		type?: Link_Type | null;
 		url?: string | null;
 		label?: string | null;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		reference?: Link_Reference_Relationship | any;
 	} | null;
 	children?: React.ReactNode;

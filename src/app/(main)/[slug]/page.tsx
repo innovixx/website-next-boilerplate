@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { cmsClient } from '../../../graphql';
-import type { Page_Meta, PagesQuery, PagesQueryVariables } from '../../../graphql/generated/schema';
+import type { PagesQuery, PagesQueryVariables } from '../../../graphql/generated/schema';
 import { PAGES } from '../../../graphql/query/page';
 import { RefreshRouteOnSave, RenderBlocks } from '../../../components';
 import { PageHeader } from '../../../sections';

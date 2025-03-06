@@ -103,8 +103,8 @@ importers:
         specifier: ^3.0.9
         version: 3.0.9(jiti@1.17.1)
       '@innovixx/stylelint-config':
-        specifier: 1.0.3-alpha.1
-        version: 1.0.3-alpha.1(typescript@5.7.3)
+        specifier: ^1.0.3
+        version: 1.0.3(typescript@5.7.3)
       '@types/color':
         specifier: ^4.2.0
         version: 4.2.0
@@ -1321,8 +1321,8 @@ packages:
       react-dom: ^18.3.1
       react-hook-form: ^7.49.3
 
-  '@innovixx/stylelint-config@1.0.3-alpha.1':
-    resolution: {integrity: sha512-DeM8XlBsmZ9ncQ3ep2krs0Qorhvn/kS9GOY3e04wk9qCeqZ8HuhQeCa5sGdZrrla6BknUI1pbON6GbTbcEYfrg==, tarball: https://npm.pkg.github.com/download/@innovixx/stylelint-config/1.0.3-alpha.1/ed6f02463c2c88055b29bda212893e8a0a81d24d}
+  '@innovixx/stylelint-config@1.0.3':
+    resolution: {integrity: sha512-9vVS9Cwq4U6IIzGKSUKB/Z1/HyCi/vJvzERl/BMvYQSlgJloEH5OvztBWlDCpDhGji7Ap/DP3snHTD0TgKxK3w==}
     engines: {node: '>=18.12.0'}
 
   '@jridgewell/gen-mapping@0.3.8':
@@ -6854,7 +6854,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@innovixx/stylelint-config@1.0.3-alpha.1(typescript@5.7.3)':
+  '@innovixx/stylelint-config@1.0.3(typescript@5.7.3)':
     dependencies:
       prettier: 3.5.2
       sass: 1.85.1

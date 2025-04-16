@@ -40,57 +40,51 @@ export const Button: React.FC<Props> = ({
 	htmlElement: El = 'button',
 	iconPosition = 'right',
 	...rest
-}) => {
-	const IconComponent = icon ? (
-		<Icon
-			icon={icon}
-			fill={iconFill}
-			size={iconSize ?? 18}
-		/>
-	) : null;
-
-	return (
-		<El
-			className={constructClassName([
-				className,
-			])}
-			type={El === 'button' ? htmlType : undefined}
-			onClick={() => {
-				if (loading === false) onClick?.();
-			}}
-			style={style}
-			title={title}
-			disabled={disabled}
-			{...rest}
+}) => (
+	<El
+		className={constructClassName([
+			className,
+		])}
+		type={El === 'button' ? htmlType : undefined}
+		onClick={() => {
+			onClick?.();
+		}}
+		style={style}
+		title={title}
+		disabled={disabled}
+		{...rest}
+	>
+		<span
+			style={{ color: textColor }}
 		>
-			<span
-				style={{ color: textColor }}
-			>
-				{
-					!(loading ?? false) && icon && iconPosition === 'left' && (
-						IconComponent
-					)
-				}
-				{children}
-				{
-					!(loading ?? false) && icon && iconPosition === 'right' && (
-						IconComponent
-					)
-				}
-				{
-					loading === true && (
-						<span className={constructClassName([
-						])}
-						>
-							<Icon
-								icon="spinnerThirdClassicLight"
-								size={iconSize ?? 18}
-								fill={iconFill}
-							/>
-						</span>
-					)
-				}
-			</span>
-		</El>
-	);
-};
+			{
+				!loading && iconPosition === 'left' && (
+					<Icon
+						icon={icon as IconType}
+						fill={iconFill}
+						size={iconSize ?? 18}
+					/>
+				)
+			}
+			{children}
+			{
+				!loading && iconPosition === 'right' && (
+					<Icon
+						icon={icon as IconType}
+						fill={iconFill}
+						size={iconSize ?? 18}
+					/>
+				)
+			}
+			{
+				loading === true && (
+					<Icon
+						icon="spinnerThirdClassicLight"
+						size={iconSize ?? 18}
+						fill={iconFill}
+					/>
+				)
+			}
+		</span>
+	</El>
+);

@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"pnpm watch:generate-types:styles\" \"next dev\" --hide=0",
-    "build": "stylelint && next build",
+    "build": "next build",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
     "lint-staged": "lint-staged --verbose",

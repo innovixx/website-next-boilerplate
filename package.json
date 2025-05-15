@@ -11,11 +11,12 @@
     "build": "next build",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
-    "lint-staged": "lint-staged --verbose",
-    "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
-    "stylelint": "stylelint \"src/**/*.scss\"",
     "generate-types:styles": "typed-scss-modules src --outputFolder src/types/styles",
-    "watch:generate-types:styles": "pnpm generate-types:styles --watch --logLevel=silent"
+    "watch:generate-types:styles": "pnpm generate-types:styles --watch --logLevel=silent",
+    "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
+    "lint-staged": "lint-staged --verbose",
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",

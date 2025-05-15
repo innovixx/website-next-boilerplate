@@ -24,6 +24,11 @@
         "name": "next"
       }
     ],
+    "paths": {
+       "../*": [
+        "./src/*"
+      ],
+    },
     "rootDirs": [
       ".",
       "src/types/styles"

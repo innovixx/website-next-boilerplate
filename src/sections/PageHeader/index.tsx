@@ -11,7 +11,7 @@ interface Props {
 
 export const PageHeader: React.FC<Props> = ({ header, description, title }) => (
 	<React.Fragment>
-		{((): JSX.Element | null => {
+		{((): React.ReactElement | null => {
 			switch (header.type) {
 				case 'default':
 					return (

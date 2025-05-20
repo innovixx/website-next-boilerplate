@@ -1,5 +1,6 @@
 import React from 'react';
 import type { FooterMenuQuery } from '../../../../graphql/generated/schema';
+import type { AppLinkProps } from '../../../../components';
 import { AppLink, Container } from '../../../../components';
 import styles from './styles.module.scss';
 
@@ -26,7 +27,7 @@ export const FooterMenu: React.FC<Props> = ({ footerMenu }) => (
 								{menuGroup.menuGroup?.links?.map((link) => (
 									<li key={link.id}>
 										<AppLink
-											link={link?.link}
+											link={link?.link as AppLinkProps['link']}
 										/>
 									</li>
 								))}

@@ -4,20 +4,19 @@ import Link from 'next/link';
 import type { Link_Reference_Relationship } from '../../graphql/generated/schema';
 import { Link_Type } from '../../graphql/generated/schema';
 
-type Props = Omit<LinkProps, 'href'> & {
+export type AppLinkProps = Omit<LinkProps, 'href'> & {
 	link?: {
 		type?: Link_Type | null;
 		url?: string | null;
 		label?: string | null;
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		reference?: Link_Reference_Relationship | any;
+		reference?: Link_Reference_Relationship | null;
 	} | null;
 	children?: React.ReactNode;
 	className?: string;
 	onFocus?: () => void;
 }
 
-export const AppLink: React.FC<Props> = ({
+export const AppLink: React.FC<AppLinkProps> = ({
 	link,
 	children,
 	className,

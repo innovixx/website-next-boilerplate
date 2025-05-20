@@ -29,7 +29,7 @@ const getPageData = async (slug: string, preview?: boolean): Promise<PagesQuery 
 	return pageData;
 };
 
-const Page = async ({ params, searchParams }: Props): Promise<JSX.Element> => {
+const Page = async ({ params, searchParams }: Props): Promise<React.ReactElement> => {
 	const { slug } = await params;
 	const { preview } = await searchParams;
 

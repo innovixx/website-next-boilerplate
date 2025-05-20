@@ -1,28 +1,30 @@
 import React from 'react';
 import * as components from '../../blocks';
 import { toPascalCase } from '../../utils/changeCase';
-import { Container } from '../layouts';
 import styles from "./styles.module.scss"
+import { Page_Layout_Blocks } from '../../graphql/generated/schema';
 
 type Props = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  blocks: any[];
+  blocks: Page_Layout_Blocks[];
   className?: string;
 };
 
-export const RenderBlocks: React.FC<Props> = ({ blocks, ...rest }) => (
-  <Container className={styles.container}>
+export const RenderBlocks: React.FC<Props> = ({ blocks, className, ...rest }) => (
+  <div className={styles.container}>
     {blocks?.map((block, i) => {
+      if (!block.blockType) return null;
       const blockType = `${toPascalCase(block.blockType)}`;
-      const Block: React.FC<any> = components[blockType as keyof typeof components];
+      const Block = components[blockType as keyof typeof components];
 
-      if (Block) {
+      if (typeof Block === "function") {
+        const BlockComponent = Block as React.ElementType;
         return (
           <div
             key={i}
             id={block.blockName ? encodeURIComponent(block.blockName) : undefined}
+            className={className}
           >
-            <Block
+            <BlockComponent
               {...block}
               {...rest}
             />
@@ -31,5 +33,5 @@ export const RenderBlocks: React.FC<Props> = ({ blocks, ...rest }) => (
       }
       return null;
     })}
-  </Container>
+  </div>
 );

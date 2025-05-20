@@ -1,0 +1,73 @@
+@use '../../../styles/' as *;
+
+div.container {
+  margin-bottom: spacing(large) !important;
+}
+
+div.marginBottomNone {
+  margin-bottom: 0 !important;
+}
+div.marginBottomSmall {
+  margin-bottom: spacing(small) !important;
+}
+div.marginBottomMedium {
+  margin-bottom: spacing(medium) !important;
+}
+div.marginBottomLarge {
+  margin-bottom: spacing(large) !important;
+}
+div.marginBottomExtraLarge {
+  margin-bottom: spacing(xLarge) !important;
+}
+
+div.paddingTopNone {
+  padding-top: 0 !important;
+}
+div.paddingTopSmall {
+  padding-top: spacing(small) !important;
+}
+div.paddingTopMedium {
+  padding-top: spacing(medium) !important;
+}
+div.paddingTopLarge {
+  padding-top: spacing(large) !important;
+}
+
+div.paddingBottomNone {
+  padding-bottom: 0 !important;
+}
+div.paddingBottomSmall {
+  padding-bottom: spacing(small) !important;
+}
+div.paddingBottomMedium {
+  padding-bottom: spacing(medium) !important;
+}
+div.paddingBottomLarge {
+  padding-bottom: spacing(large) !important;
+}
+
+div.paddingLeftNone {
+  padding-left: 0 !important;
+}
+div.paddingLeftSmall {
+  padding-left: spacing(small) !important;
+}
+div.paddingLeftMedium {
+  padding-left: spacing(medium) !important;
+}
+div.paddingLeftLarge {
+  padding-left: spacing(large) !important;
+}
+
+div.paddingRightNone {
+  padding-right: 0 !important;
+}
+div.paddingRightSmall {
+  padding-right: spacing(small) !important;
+}
+div.paddingRightMedium {
+  padding-right: spacing(medium) !important;
+}
+div.paddingRightLarge {
+  padding-right: spacing(large) !important;
+}

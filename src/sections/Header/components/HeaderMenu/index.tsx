@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import type { HeaderMenuQuery } from '../../../../graphql/generated/schema';
 import styles from './styles.module.scss';
+import type { AppLinkProps } from '../../../../components';
 import { AppLink, Container } from '../../../../components';
 
 interface Props {
@@ -27,7 +28,7 @@ export const HeaderMenu: React.FC<Props> = ({ headerMenu }) => (
 						<ul key={link.id}>
 							<li>
 								<AppLink
-									link={link.link}
+									link={link.link as AppLinkProps['link']}
 								/>
 							</li>
 						</ul>

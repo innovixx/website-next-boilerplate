@@ -6,9 +6,11 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
-export type ContentBlockFragmentFragment = { __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null };
+export type ContentBlockFragmentFragment = { __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, blockSettings?: { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null } | null };
 
-export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null };
+export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, blockSettings?: { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null } | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null };
+
+export type BlockSettingsFieldFragmentFragment = { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null };
 
 export type MediaFieldFragmentFragment = { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null };
 
@@ -35,7 +37,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', Pages?: { __typename?: 'Pages', docs?: Array<{ __typename?: 'Page', id: string, title?: string | null, description?: any | null, slug?: string | null, updatedAt?: any | null, createdAt?: any | null, header?: { __typename?: 'Page_Header', type?: Page_Header_Type | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null, layout?: { __typename?: 'Page_Layout', blocks?: Array<{ __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null } | { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null }> | null } | null, meta?: { __typename?: 'Page_Meta', title?: string | null, description?: string | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null } | null> | null } | null };
+export type PagesQuery = { __typename?: 'Query', Pages?: { __typename?: 'Pages', docs?: Array<{ __typename?: 'Page', id: string, title?: string | null, description?: any | null, slug?: string | null, updatedAt?: any | null, createdAt?: any | null, header?: { __typename?: 'Page_Header', type?: Page_Header_Type | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null, layout?: { __typename?: 'Page_Layout', blocks?: Array<{ __typename?: 'Content', content?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, blockSettings?: { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null } | null } | { __typename?: 'Image', caption?: any | null, id?: string | null, blockName?: string | null, blockType?: string | null, imageSize?: Image_ImageSize | null, blockSettings?: { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null } | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null }> | null } | null, meta?: { __typename?: 'Page_Meta', title?: string | null, description?: string | null, image?: { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null } | null } | null } | null> | null } | null };
 
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -62,9 +64,65 @@ export type Access = {
   user?: Maybe<UserAccess>;
 };
 
+export type BlockSettings = {
+  __typename?: 'BlockSettings';
+  margin?: Maybe<BlockSettings_Margin>;
+  padding?: Maybe<BlockSettings_Padding>;
+};
+
+export type BlockSettings_Margin = {
+  __typename?: 'BlockSettings_Margin';
+  marginBottom?: Maybe<BlockSettings_Margin_MarginBottom>;
+};
+
+export enum BlockSettings_Margin_MarginBottom {
+  ExtraLarge = 'extraLarge',
+  Large = 'large',
+  Medium = 'medium',
+  None = 'none',
+  Small = 'small'
+}
+
+export type BlockSettings_Padding = {
+  __typename?: 'BlockSettings_Padding';
+  paddingBottom?: Maybe<BlockSettings_Padding_PaddingBottom>;
+  paddingLeft?: Maybe<BlockSettings_Padding_PaddingLeft>;
+  paddingRight?: Maybe<BlockSettings_Padding_PaddingRight>;
+  paddingTop?: Maybe<BlockSettings_Padding_PaddingTop>;
+};
+
+export enum BlockSettings_Padding_PaddingBottom {
+  Large = 'large',
+  Medium = 'medium',
+  None = 'none',
+  Small = 'small'
+}
+
+export enum BlockSettings_Padding_PaddingLeft {
+  Large = 'large',
+  Medium = 'medium',
+  None = 'none',
+  Small = 'small'
+}
+
+export enum BlockSettings_Padding_PaddingRight {
+  Large = 'large',
+  Medium = 'medium',
+  None = 'none',
+  Small = 'small'
+}
+
+export enum BlockSettings_Padding_PaddingTop {
+  Large = 'large',
+  Medium = 'medium',
+  None = 'none',
+  Small = 'small'
+}
+
 export type Content = {
   __typename?: 'Content';
   blockName?: Maybe<Scalars['String']>;
+  blockSettings?: Maybe<BlockSettings>;
   blockType?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['JSON']>;
   id?: Maybe<Scalars['String']>;
@@ -1534,6 +1592,7 @@ export enum HeaderMenu_Links_Link_ReferenceRelationshipInputRelationTo {
 export type Image = {
   __typename?: 'Image';
   blockName?: Maybe<Scalars['String']>;
+  blockSettings?: Maybe<BlockSettings>;
   blockType?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['JSON']>;
   id?: Maybe<Scalars['String']>;
@@ -7390,14 +7449,30 @@ export type VersionsPages = {
   totalPages?: Maybe<Scalars['Int']>;
 };
 
+export const BlockSettingsFieldFragmentFragmentDoc = gql`
+    fragment BlockSettingsFieldFragment on BlockSettings {
+  margin {
+    marginBottom
+  }
+  padding {
+    paddingBottom
+    paddingLeft
+    paddingRight
+    paddingTop
+  }
+}
+    `;
 export const ContentBlockFragmentFragmentDoc = gql`
     fragment ContentBlockFragment on Content {
+  blockSettings {
+    ...BlockSettingsFieldFragment
+  }
   content
   id
   blockName
   blockType
 }
-    `;
+    ${BlockSettingsFieldFragmentFragmentDoc}`;
 export const MediaFieldFragmentFragmentDoc = gql`
     fragment MediaFieldFragment on Media {
   id
@@ -7434,6 +7509,9 @@ export const MediaFieldFragmentFragmentDoc = gql`
     `;
 export const ImageBlockFragmentFragmentDoc = gql`
     fragment ImageBlockFragment on Image {
+  blockSettings {
+    ...BlockSettingsFieldFragment
+  }
   image {
     ...MediaFieldFragment
   }
@@ -7443,7 +7521,8 @@ export const ImageBlockFragmentFragmentDoc = gql`
   blockType
   imageSize
 }
-    ${MediaFieldFragmentFragmentDoc}`;
+    ${BlockSettingsFieldFragmentFragmentDoc}
+${MediaFieldFragmentFragmentDoc}`;
 export const FooterMenuDocument = gql`
     query FooterMenu($draft: Boolean) {
   FooterMenu(draft: $draft) {

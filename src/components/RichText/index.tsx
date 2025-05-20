@@ -24,7 +24,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 				<AppLink
 					link={{
 						type: fields.linkType === 'internal' ? Link_Type.Internal : Link_Type.External,
-						reference: fields.doc,
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
+						reference: fields.doc as any,
 						url: fields.url,
 					}}
 				>

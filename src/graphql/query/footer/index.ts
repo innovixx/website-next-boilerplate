@@ -1,4 +1,5 @@
-import { gql } from 'graphql-request';
+import { gql } from '@apollo/client';
+import { LINK_FIELD } from '../../fragments/fields/link';
 
 export const FOOTER_MENU = gql`
 	query FooterMenu($draft: Boolean) {
@@ -10,22 +11,12 @@ export const FOOTER_MENU = gql`
 					links {
 						id
 						link {
-							label
-							reference {
-								value {
-									... on Page {
-										title
-										slug
-									}
-								}
-								relationTo
-							}
-							url
-							type
+							...LinkFieldFragment
 						}
 					}
 				}
 			}
 		}
 	}
+	${LINK_FIELD}
 `;

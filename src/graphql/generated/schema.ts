@@ -12,6 +12,8 @@ export type ImageBlockFragmentFragment = { __typename?: 'Image', caption?: any |
 
 export type BlockSettingsFieldFragmentFragment = { __typename?: 'BlockSettings', margin?: { __typename?: 'BlockSettings_Margin', marginBottom?: BlockSettings_Margin_MarginBottom | null } | null, padding?: { __typename?: 'BlockSettings_Padding', paddingBottom?: BlockSettings_Padding_PaddingBottom | null, paddingLeft?: BlockSettings_Padding_PaddingLeft | null, paddingRight?: BlockSettings_Padding_PaddingRight | null, paddingTop?: BlockSettings_Padding_PaddingTop | null } | null };
 
+export type LinkFieldFragmentFragment = { __typename?: 'Link', label?: string | null, url?: string | null, type?: Link_Type | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null };
+
 export type MediaFieldFragmentFragment = { __typename?: 'Media', id: string, alt: string, updatedAt?: any | null, createdAt?: any | null, url?: string | null, filename?: string | null, mimeType?: string | null, filesize?: number | null, width?: number | null, height?: number | null, focalX?: number | null, focalY?: number | null, sizes?: { __typename?: 'Media_Sizes', card?: { __typename?: 'Media_Sizes_Card', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null, feature?: { __typename?: 'Media_Sizes_Feature', url?: string | null, width?: number | null, height?: number | null, mimeType?: string | null, filesize?: number | null, filename?: string | null } | null } | null };
 
 export type FooterMenuQueryVariables = Exact<{
@@ -26,7 +28,7 @@ export type HeaderMenuQueryVariables = Exact<{
 }>;
 
 
-export type HeaderMenuQuery = { __typename?: 'Query', HeaderMenu?: { __typename?: 'HeaderMenu', links?: Array<{ __typename?: 'HeaderMenu_Links', id?: string | null, link?: { __typename?: 'Link', label?: string | null, type?: Link_Type | null, url?: string | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null } | null };
+export type HeaderMenuQuery = { __typename?: 'Query', HeaderMenu?: { __typename?: 'HeaderMenu', links?: Array<{ __typename?: 'HeaderMenu_Links', id?: string | null, link?: { __typename?: 'Link', label?: string | null, url?: string | null, type?: Link_Type | null, reference?: { __typename?: 'Link_Reference_Relationship', relationTo?: Link_Reference_RelationTo | null, value?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null }> | null } | null };
 
 export type PagesQueryVariables = Exact<{
   draft?: InputMaybe<Scalars['Boolean']>;
@@ -7523,6 +7525,22 @@ export const ImageBlockFragmentFragmentDoc = gql`
 }
     ${BlockSettingsFieldFragmentFragmentDoc}
 ${MediaFieldFragmentFragmentDoc}`;
+export const LinkFieldFragmentFragmentDoc = gql`
+    fragment LinkFieldFragment on Link {
+  label
+  reference {
+    value {
+      ... on Page {
+        title
+        slug
+      }
+    }
+    relationTo
+  }
+  url
+  type
+}
+    `;
 export const FooterMenuDocument = gql`
     query FooterMenu($draft: Boolean) {
   FooterMenu(draft: $draft) {
@@ -7533,25 +7551,14 @@ export const FooterMenuDocument = gql`
         links {
           id
           link {
-            label
-            reference {
-              value {
-                ... on Page {
-                  title
-                  slug
-                }
-              }
-              relationTo
-            }
-            url
-            type
+            ...LinkFieldFragment
           }
         }
       }
     }
   }
 }
-    `;
+    ${LinkFieldFragmentFragmentDoc}`;
 
 /**
  * __useFooterMenuQuery__
@@ -7584,25 +7591,14 @@ export const HeaderMenuDocument = gql`
     query HeaderMenu($draft: Boolean) {
   HeaderMenu(draft: $draft) {
     links {
-      link {
-        label
-        type
-        url
-        reference {
-          relationTo
-          value {
-            ... on Page {
-              title
-              slug
-            }
-          }
-        }
-      }
       id
+      link {
+        ...LinkFieldFragment
+      }
     }
   }
 }
-    `;
+    ${LinkFieldFragmentFragmentDoc}`;
 
 /**
  * __useHeaderMenuQuery__

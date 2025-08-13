@@ -1,37 +1,35 @@
 import React from 'react';
 import * as components from '../../blocks';
 import { toPascalCase } from '../../utils/changeCase';
-import styles from "./styles.module.scss"
-import { Page_Layout_Blocks } from '../../graphql/generated/schema';
+import { SharedBlockType } from '../../blocks/types';
+import { mergeBlockSettings } from '../../utils/mergeBlockSettings';
 
-type Props = {
-  blocks: Page_Layout_Blocks[];
+type Props = SharedBlockType & {
+  blocks: any[];
   className?: string;
 };
 
-export const RenderBlocks: React.FC<Props> = ({ blocks, className, ...rest }) => (
-  <div className={styles.container}>
+export const RenderBlocks: React.FC<Props> = ({ blocks, blockSettings, ...rest }) => (
+  <>
     {blocks?.map((block, i) => {
       if (!block.blockType) return null;
       const blockType = `${toPascalCase(block.blockType)}`;
       const Block = components[blockType as keyof typeof components];
 
+      const mergedBlockSettings = mergeBlockSettings(block.blockSettings, blockSettings);
+
       if (typeof Block === "function") {
         const BlockComponent = Block as React.ElementType;
         return (
-          <div
+          <BlockComponent
             key={i}
-            id={block.blockName ? encodeURIComponent(block.blockName) : undefined}
-            className={className}
-          >
-            <BlockComponent
-              {...block}
-              {...rest}
-            />
-          </div>
+            {...block}
+            {...rest}
+            blockSettings={mergedBlockSettings}
+          />
         );
       }
       return null;
     })}
-  </div>
+  </>
 );

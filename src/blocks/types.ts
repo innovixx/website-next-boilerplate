@@ -1,3 +1,10 @@
+import type { BlockSettings } from '../graphql/generated/schema';
+
+export type SharedBlockType = {
+  blockSettings?: BlockSettings
+  parentBlockType?: string
+}
+
 type GetKey<T> = T extends Record<string, unknown> ? keyof T : never;
 type Singularize<T extends string> =
   T extends `${infer Prefix}ies` ? `${Prefix}y` :

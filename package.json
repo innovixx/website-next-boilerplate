@@ -16,7 +16,7 @@
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
     "lint-staged": "lint-staged --verbose",
     "stylelint": "stylelint \"src/**/*.scss\"",
-    "prepare": "husky"
+    "prepare": "if [ -d node_modules/husky ]; then husky; fi"
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",

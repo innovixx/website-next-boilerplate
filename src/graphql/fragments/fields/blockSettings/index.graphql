@@ -1,0 +1,11 @@
+fragment BlockSettingsFieldFragment on BlockSettings {
+  margin {
+    marginBottom
+  }
+  padding {
+    paddingBottom
+    paddingLeft
+    paddingRight
+    paddingTop
+  }
+}

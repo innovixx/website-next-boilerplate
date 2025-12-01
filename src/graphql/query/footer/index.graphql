@@ -1,0 +1,16 @@
+query FooterMenu($draft: Boolean) {
+	FooterMenu(draft: $draft) {
+		menuGroups {
+			id
+			menuGroup {
+				title
+				links {
+					id
+					link {
+						...LinkFieldFragment
+					}
+				}
+			}
+		}
+	}
+}

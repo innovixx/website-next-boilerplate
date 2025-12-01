@@ -1,8 +1,10 @@
-
 import type { CodegenConfig } from '@graphql-codegen/cli';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: CodegenConfig = {
-	documents: './src/graphql/**/*.{ts,tsx}',
+	documents: './src/graphql/**/*.graphql',
 	generates: {
 		'src/graphql/generated/schema.ts': {
 			plugins: [
@@ -11,8 +13,11 @@ const config: CodegenConfig = {
 				'typescript-react-apollo',
 			],
 		},
+		'src/graphql/generated/schema.graphql': {
+			plugins: ['schema-ast'],
+		},
 	},
 	overwrite: true,
-	schema: 'http://localhost:9000/api/graphql',
+	schema: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`,
 };
 export default config;

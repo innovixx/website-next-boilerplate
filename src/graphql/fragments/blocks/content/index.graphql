@@ -1,0 +1,9 @@
+fragment ContentBlockFragment on Content {
+  blockSettings {
+    ...BlockSettingsFieldFragment
+  }
+  content
+  id
+  blockName
+  blockType
+}

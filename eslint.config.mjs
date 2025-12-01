@@ -1,27 +1,61 @@
+
+/* eslint-disable import/no-unresolved */
 import baseConfig from '@innovixx/eslint-config/config/configs/base/index.mjs';
 import reactConfig from '@innovixx/eslint-config/config/configs/react/index.mjs';
 import typescriptConfig from '@innovixx/eslint-config/config/configs/typescript/index.mjs';
+import graphqlPlugin from '@graphql-eslint/eslint-plugin';
 
 export default [
 	baseConfig,
 	reactConfig,
-	typescriptConfig,
+	{
+		...typescriptConfig,
+		files: ['**/*.{ts,tsx}'],
+	},
 	{
 		ignores: [
-			'src/graphql/generated/schema.ts',
-			'src/components/RichText/nodeFormat.ts',
-			'src/components/RichText/serialize.tsx',
-			'src/components/RenderBlocks/index.tsx',
+			'src/graphql/generated',
+			'codegen.ts',
+			'graphql.config.ts',
+			'schema.graphql',
 		],
 	},
 	{
 		files: ['**/*.{js,jsx,ts,tsx}'],
+		rules: {
+			camelcase: 'off',
+			'react/require-default-props': 0,
+		},
 	},
 	{
+		files: ['**/*.graphql'],
+		languageOptions: {
+			parser: graphqlPlugin.parser,
+		},
+		ignores: [
+			'**/node_modules/**',
+			'src/graphql/generated/schema.graphql',
+			'src/graphql/mutation/createNewsletterSubscriber/index.graphql',
+		],
+		plugins: {
+			'@graphql-eslint': graphqlPlugin,
+		},
 		rules: {
-			camelcase: 0,
-			'no-undef': 0,
-			'react/require-default-props': 0,
+			'eol-last': 'warn',
+			'@graphql-eslint/no-anonymous-operations': 'warn',
+			'@graphql-eslint/naming-convention': [
+				'warn',
+				{
+					OperationDefinition: {
+						style: 'PascalCase',
+						forbiddenPrefixes: ['Query', 'Mutation', 'Subscription', 'Get'],
+						forbiddenSuffixes: ['Query', 'Mutation', 'Subscription'],
+					},
+					ObjectTypeDefinition: {
+						style: 'PascalCase',
+					},
+				},
+			],
 		},
 	},
 ];

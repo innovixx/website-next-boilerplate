@@ -2,8 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { cmsClient } from '../../../graphql';
-import type { PagesQuery, PagesQueryVariables } from '../../../graphql/generated/schema';
-import { PAGES } from '../../../graphql/query/page';
+import { PagesDocument, type PagesQuery, type PagesQueryVariables } from '../../../graphql/generated/schema';
 import { RefreshRouteOnSave, RenderBlocks } from '../../../components';
 import { PageHeader } from '../../../sections';
 import type { GenerateMetaArgs } from '../../../utils/generateMeta';
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const getPageData = async (slug: string, preview?: boolean): Promise<PagesQuery | null> => {
-	const pageData = await cmsClient.request<PagesQuery, PagesQueryVariables>(PAGES, {
+	const pageData = await cmsClient.request<PagesQuery, PagesQueryVariables>(PagesDocument, {
 		limit: 1,
 		page: 1,
 		where: {

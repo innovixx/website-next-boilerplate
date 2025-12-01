@@ -1,0 +1,10 @@
+query HeaderMenu($draft: Boolean) {
+  HeaderMenu(draft: $draft) {
+    links {
+      id
+      link {
+        ...LinkFieldFragment
+      }
+    }
+  }
+}

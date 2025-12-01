@@ -12,8 +12,10 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "orsenkucher.vscode-graphql",
-        "stylelint.vscode-stylelint"
+        "GraphQL.vscode-graphql",
+        "GraphQL.vscode-graphql-syntax",
+        "stylelint.vscode-stylelint",
+        "mrmlnc.vscode-scss"
       ]
     }
   },

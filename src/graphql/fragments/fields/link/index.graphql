@@ -1,0 +1,14 @@
+fragment LinkFieldFragment on Link {
+	label
+	reference {
+		value {
+			... on Page {
+				title
+				slug
+			}
+		}
+		relationTo
+	}
+	url
+	type
+}

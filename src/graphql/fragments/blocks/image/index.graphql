@@ -1,0 +1,13 @@
+fragment ImageBlockFragment on Image {
+  blockSettings {
+    ...BlockSettingsFieldFragment
+  }
+  image {
+    ...MediaFieldFragment
+  }
+  caption
+  id
+  blockName
+  blockType
+  imageSize
+}

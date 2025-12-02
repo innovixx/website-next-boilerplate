@@ -22,10 +22,6 @@ export default [
 	},
 	{
 		files: ['**/*.{js,jsx,ts,tsx}'],
-		rules: {
-			camelcase: 'off',
-			'react/require-default-props': 0,
-		},
 	},
 	{
 		files: ['**/*.graphql'],
@@ -35,7 +31,6 @@ export default [
 		ignores: [
 			'**/node_modules/**',
 			'src/graphql/generated/schema.graphql',
-			'src/graphql/mutation/createNewsletterSubscriber/index.graphql',
 		],
 		plugins: {
 			'@graphql-eslint': graphqlPlugin,
@@ -43,6 +38,7 @@ export default [
 		rules: {
 			'eol-last': 'warn',
 			'@graphql-eslint/no-anonymous-operations': 'warn',
+			'@graphql-eslint/no-duplicate-fields': 'warn',
 			'@graphql-eslint/naming-convention': [
 				'warn',
 				{

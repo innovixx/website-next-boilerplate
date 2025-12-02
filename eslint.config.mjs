@@ -22,6 +22,9 @@ export default [
 	},
 	{
 		files: ['**/*.{js,jsx,ts,tsx}'],
+		rules: {
+			camelcase: 'off',
+		},
 	},
 	{
 		files: ['**/*.graphql'],

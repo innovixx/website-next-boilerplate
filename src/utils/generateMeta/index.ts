@@ -27,7 +27,7 @@ export interface GenerateMetaArgs {
 export const generateMeta = async (args: GenerateMetaArgs): Promise<Metadata> => {
 	const { doc } = args;
 
-	const ogImage = getImageURL(doc?.meta.image);
+	const ogImage = getImageURL(doc?.meta?.image);
 
 	const title = doc?.meta.title ? `${doc.meta.title}` : '';
 

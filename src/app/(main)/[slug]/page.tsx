@@ -2,11 +2,12 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { cmsClient } from '../../../graphql';
-import { PagesDocument, type PagesQuery, type PagesQueryVariables } from '../../../graphql/generated/schema';
+import { type PagesQuery, type PagesQueryVariables } from '../../../graphql/generated/schema';
 import { RefreshRouteOnSave, RenderBlocks } from '../../../components';
 import { PageHeader } from '../../../sections';
 import type { GenerateMetaArgs } from '../../../utils/generateMeta';
 import { generateMeta } from '../../../utils/generateMeta';
+import { PagesDocument } from '../../../graphql/generated/graphql';
 
 interface Props {
 	params: Promise<Record<string, string>>

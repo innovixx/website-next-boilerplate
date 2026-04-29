@@ -57,7 +57,7 @@ export const FacelessContainerWithProviders: React.FC<Props> = ({
 				<ModalProvider
 					transTime={250}
 					classPrefix="invx"
-					zIndex={zIndex.modal}
+					zIndex={20}
 				>
 					<Context.Provider value={width}>
 						<GridProvider

@@ -4,6 +4,7 @@ type Access {
   header_menu: header_menuAccess
   media: mediaAccess
   page: pageAccess
+  payload_kv: payload_kvAccess
   payload_locked_documents: payload_locked_documentsAccess
   payload_preferences: payload_preferencesAccess
   user: userAccess
@@ -3096,32 +3097,36 @@ input Media_width_operator {
 type Mutation {
   createMedia(data: mutationMediaInput!, draft: Boolean): Media
   createPage(data: mutationPageInput!, draft: Boolean): Page
+  createPayloadKv(data: mutationPayloadKvInput!, draft: Boolean): PayloadKv
   createPayloadLockedDocument(data: mutationPayloadLockedDocumentInput!, draft: Boolean): PayloadLockedDocument
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
   createUser(data: mutationUserInput!, draft: Boolean): User
-  deleteMedia(id: String!): Media
-  deletePage(id: String!): Page
-  deletePayloadLockedDocument(id: String!): PayloadLockedDocument
-  deletePayloadPreference(id: String!): PayloadPreference
-  deleteUser(id: String!): User
+  deleteMedia(id: String!, trash: Boolean): Media
+  deletePage(id: String!, trash: Boolean): Page
+  deletePayloadKv(id: String!, trash: Boolean): PayloadKv
+  deletePayloadLockedDocument(id: String!, trash: Boolean): PayloadLockedDocument
+  deletePayloadPreference(id: String!, trash: Boolean): PayloadPreference
+  deleteUser(id: String!, trash: Boolean): User
   duplicateMedia(data: mutationMediaInput!, id: String!): Media
   duplicatePage(data: mutationPageInput!, id: String!): Page
+  duplicatePayloadKv(data: mutationPayloadKvInput!, id: String!): PayloadKv
   duplicatePayloadLockedDocument(data: mutationPayloadLockedDocumentInput!, id: String!): PayloadLockedDocument
   duplicatePayloadPreference(data: mutationPayloadPreferenceInput!, id: String!): PayloadPreference
-  forgotPasswordUser(disableEmail: Boolean, email: String!, expiration: Int): Boolean!
+  forgotPasswordUser(email: String!): Boolean!
   loginUser(email: String!, password: String): userLoginResult
-  logoutUser: String
+  logoutUser(allSessions: Boolean): String
   refreshTokenUser: userRefreshedUser
   resetPasswordUser(password: String, token: String): userResetPassword
   restoreVersionPage(draft: Boolean, id: String): Page
   unlockUser(email: String!): Boolean!
   updateFooterMenu(data: mutationFooterMenuInput!, draft: Boolean): FooterMenu
   updateHeaderMenu(data: mutationHeaderMenuInput!, draft: Boolean): HeaderMenu
-  updateMedia(autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, id: String!): Media
-  updatePage(autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, id: String!): Page
-  updatePayloadLockedDocument(autosave: Boolean, data: mutationPayloadLockedDocumentUpdateInput!, draft: Boolean, id: String!): PayloadLockedDocument
-  updatePayloadPreference(autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, id: String!): PayloadPreference
-  updateUser(autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean, id: String!): User
+  updateMedia(autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, id: String!, trash: Boolean): Media
+  updatePage(autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, id: String!, trash: Boolean): Page
+  updatePayloadKv(autosave: Boolean, data: mutationPayloadKvUpdateInput!, draft: Boolean, id: String!, trash: Boolean): PayloadKv
+  updatePayloadLockedDocument(autosave: Boolean, data: mutationPayloadLockedDocumentUpdateInput!, draft: Boolean, id: String!, trash: Boolean): PayloadLockedDocument
+  updatePayloadPreference(autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, id: String!, trash: Boolean): PayloadPreference
+  updateUser(autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean, id: String!, trash: Boolean): User
   verifyEmailUser(token: String): Boolean
 }
 
@@ -3161,15 +3166,14 @@ type PageDeleteDocAccess {
 
 type PageDocAccessFields {
   _status: PageDocAccessFields__status
-  blocks: PageDocAccessFields_blocks
   createdAt: PageDocAccessFields_createdAt
   description: PageDocAccessFields_description
-  image: PageDocAccessFields_image
+  header: PageDocAccessFields_header
   isPlaceholder: PageDocAccessFields_isPlaceholder
+  layout: PageDocAccessFields_layout
   meta: PageDocAccessFields_meta
   slug: PageDocAccessFields_slug
   title: PageDocAccessFields_title
-  type: PageDocAccessFields_type
   updatedAt: PageDocAccessFields_updatedAt
 }
 
@@ -3193,29 +3197,6 @@ type PageDocAccessFields__status_Read {
 }
 
 type PageDocAccessFields__status_Update {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_blocks {
-  create: PageDocAccessFields_blocks_Create
-  delete: PageDocAccessFields_blocks_Delete
-  read: PageDocAccessFields_blocks_Read
-  update: PageDocAccessFields_blocks_Update
-}
-
-type PageDocAccessFields_blocks_Create {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_blocks_Delete {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_blocks_Read {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_blocks_Update {
   permission: Boolean!
 }
 
@@ -3265,26 +3246,54 @@ type PageDocAccessFields_description_Update {
   permission: Boolean!
 }
 
-type PageDocAccessFields_image {
-  create: PageDocAccessFields_image_Create
-  delete: PageDocAccessFields_image_Delete
-  read: PageDocAccessFields_image_Read
-  update: PageDocAccessFields_image_Update
+type PageDocAccessFields_header {
+  image: PageDocAccessFields_header_image
+  type: PageDocAccessFields_header_type
 }
 
-type PageDocAccessFields_image_Create {
+type PageDocAccessFields_header_image {
+  create: PageDocAccessFields_header_image_Create
+  delete: PageDocAccessFields_header_image_Delete
+  read: PageDocAccessFields_header_image_Read
+  update: PageDocAccessFields_header_image_Update
+}
+
+type PageDocAccessFields_header_image_Create {
   permission: Boolean!
 }
 
-type PageDocAccessFields_image_Delete {
+type PageDocAccessFields_header_image_Delete {
   permission: Boolean!
 }
 
-type PageDocAccessFields_image_Read {
+type PageDocAccessFields_header_image_Read {
   permission: Boolean!
 }
 
-type PageDocAccessFields_image_Update {
+type PageDocAccessFields_header_image_Update {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_header_type {
+  create: PageDocAccessFields_header_type_Create
+  delete: PageDocAccessFields_header_type_Delete
+  read: PageDocAccessFields_header_type_Read
+  update: PageDocAccessFields_header_type_Update
+}
+
+type PageDocAccessFields_header_type_Create {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_header_type_Delete {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_header_type_Read {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_header_type_Update {
   permission: Boolean!
 }
 
@@ -3308,6 +3317,33 @@ type PageDocAccessFields_isPlaceholder_Read {
 }
 
 type PageDocAccessFields_isPlaceholder_Update {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_layout {
+  blocks: PageDocAccessFields_layout_blocks
+}
+
+type PageDocAccessFields_layout_blocks {
+  create: PageDocAccessFields_layout_blocks_Create
+  delete: PageDocAccessFields_layout_blocks_Delete
+  read: PageDocAccessFields_layout_blocks_Read
+  update: PageDocAccessFields_layout_blocks_Update
+}
+
+type PageDocAccessFields_layout_blocks_Create {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_layout_blocks_Delete {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_layout_blocks_Read {
+  permission: Boolean!
+}
+
+type PageDocAccessFields_layout_blocks_Update {
   permission: Boolean!
 }
 
@@ -3480,29 +3516,6 @@ type PageDocAccessFields_title_Update {
   permission: Boolean!
 }
 
-type PageDocAccessFields_type {
-  create: PageDocAccessFields_type_Create
-  delete: PageDocAccessFields_type_Delete
-  read: PageDocAccessFields_type_Read
-  update: PageDocAccessFields_type_Update
-}
-
-type PageDocAccessFields_type_Create {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_type_Delete {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_type_Read {
-  permission: Boolean!
-}
-
-type PageDocAccessFields_type_Update {
-  permission: Boolean!
-}
-
 type PageDocAccessFields_updatedAt {
   create: PageDocAccessFields_updatedAt_Create
   delete: PageDocAccessFields_updatedAt_Delete
@@ -3528,15 +3541,14 @@ type PageDocAccessFields_updatedAt_Update {
 
 type PageFields {
   _status: PageFields__status
-  blocks: PageFields_blocks
   createdAt: PageFields_createdAt
   description: PageFields_description
-  image: PageFields_image
+  header: PageFields_header
   isPlaceholder: PageFields_isPlaceholder
+  layout: PageFields_layout
   meta: PageFields_meta
   slug: PageFields_slug
   title: PageFields_title
-  type: PageFields_type
   updatedAt: PageFields_updatedAt
 }
 
@@ -3560,29 +3572,6 @@ type PageFields__status_Read {
 }
 
 type PageFields__status_Update {
-  permission: Boolean!
-}
-
-type PageFields_blocks {
-  create: PageFields_blocks_Create
-  delete: PageFields_blocks_Delete
-  read: PageFields_blocks_Read
-  update: PageFields_blocks_Update
-}
-
-type PageFields_blocks_Create {
-  permission: Boolean!
-}
-
-type PageFields_blocks_Delete {
-  permission: Boolean!
-}
-
-type PageFields_blocks_Read {
-  permission: Boolean!
-}
-
-type PageFields_blocks_Update {
   permission: Boolean!
 }
 
@@ -3632,26 +3621,54 @@ type PageFields_description_Update {
   permission: Boolean!
 }
 
-type PageFields_image {
-  create: PageFields_image_Create
-  delete: PageFields_image_Delete
-  read: PageFields_image_Read
-  update: PageFields_image_Update
+type PageFields_header {
+  image: PageFields_header_image
+  type: PageFields_header_type
 }
 
-type PageFields_image_Create {
+type PageFields_header_image {
+  create: PageFields_header_image_Create
+  delete: PageFields_header_image_Delete
+  read: PageFields_header_image_Read
+  update: PageFields_header_image_Update
+}
+
+type PageFields_header_image_Create {
   permission: Boolean!
 }
 
-type PageFields_image_Delete {
+type PageFields_header_image_Delete {
   permission: Boolean!
 }
 
-type PageFields_image_Read {
+type PageFields_header_image_Read {
   permission: Boolean!
 }
 
-type PageFields_image_Update {
+type PageFields_header_image_Update {
+  permission: Boolean!
+}
+
+type PageFields_header_type {
+  create: PageFields_header_type_Create
+  delete: PageFields_header_type_Delete
+  read: PageFields_header_type_Read
+  update: PageFields_header_type_Update
+}
+
+type PageFields_header_type_Create {
+  permission: Boolean!
+}
+
+type PageFields_header_type_Delete {
+  permission: Boolean!
+}
+
+type PageFields_header_type_Read {
+  permission: Boolean!
+}
+
+type PageFields_header_type_Update {
   permission: Boolean!
 }
 
@@ -3675,6 +3692,33 @@ type PageFields_isPlaceholder_Read {
 }
 
 type PageFields_isPlaceholder_Update {
+  permission: Boolean!
+}
+
+type PageFields_layout {
+  blocks: PageFields_layout_blocks
+}
+
+type PageFields_layout_blocks {
+  create: PageFields_layout_blocks_Create
+  delete: PageFields_layout_blocks_Delete
+  read: PageFields_layout_blocks_Read
+  update: PageFields_layout_blocks_Update
+}
+
+type PageFields_layout_blocks_Create {
+  permission: Boolean!
+}
+
+type PageFields_layout_blocks_Delete {
+  permission: Boolean!
+}
+
+type PageFields_layout_blocks_Read {
+  permission: Boolean!
+}
+
+type PageFields_layout_blocks_Update {
   permission: Boolean!
 }
 
@@ -3844,29 +3888,6 @@ type PageFields_title_Read {
 }
 
 type PageFields_title_Update {
-  permission: Boolean!
-}
-
-type PageFields_type {
-  create: PageFields_type_Create
-  delete: PageFields_type_Delete
-  read: PageFields_type_Read
-  update: PageFields_type_Update
-}
-
-type PageFields_type_Create {
-  permission: Boolean!
-}
-
-type PageFields_type_Delete {
-  permission: Boolean!
-}
-
-type PageFields_type_Read {
-  permission: Boolean!
-}
-
-type PageFields_type_Update {
   permission: Boolean!
 }
 
@@ -4217,17 +4238,233 @@ input Page_where_or {
 }
 
 type Pages {
-  docs: [Page]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [Page!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
+}
+
+type PayloadKv {
+  data: JSON!
+  id: String!
+  key: String!
+}
+
+type PayloadKvCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvDocAccessFields {
+  data: PayloadKvDocAccessFields_data
+  key: PayloadKvDocAccessFields_key
+}
+
+type PayloadKvDocAccessFields_data {
+  create: PayloadKvDocAccessFields_data_Create
+  delete: PayloadKvDocAccessFields_data_Delete
+  read: PayloadKvDocAccessFields_data_Read
+  update: PayloadKvDocAccessFields_data_Update
+}
+
+type PayloadKvDocAccessFields_data_Create {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_data_Delete {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_data_Read {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_data_Update {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_key {
+  create: PayloadKvDocAccessFields_key_Create
+  delete: PayloadKvDocAccessFields_key_Delete
+  read: PayloadKvDocAccessFields_key_Read
+  update: PayloadKvDocAccessFields_key_Update
+}
+
+type PayloadKvDocAccessFields_key_Create {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_key_Delete {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_key_Read {
+  permission: Boolean!
+}
+
+type PayloadKvDocAccessFields_key_Update {
+  permission: Boolean!
+}
+
+type PayloadKvFields {
+  data: PayloadKvFields_data
+  key: PayloadKvFields_key
+}
+
+type PayloadKvFields_data {
+  create: PayloadKvFields_data_Create
+  delete: PayloadKvFields_data_Delete
+  read: PayloadKvFields_data_Read
+  update: PayloadKvFields_data_Update
+}
+
+type PayloadKvFields_data_Create {
+  permission: Boolean!
+}
+
+type PayloadKvFields_data_Delete {
+  permission: Boolean!
+}
+
+type PayloadKvFields_data_Read {
+  permission: Boolean!
+}
+
+type PayloadKvFields_data_Update {
+  permission: Boolean!
+}
+
+type PayloadKvFields_key {
+  create: PayloadKvFields_key_Create
+  delete: PayloadKvFields_key_Delete
+  read: PayloadKvFields_key_Read
+  update: PayloadKvFields_key_Update
+}
+
+type PayloadKvFields_key_Create {
+  permission: Boolean!
+}
+
+type PayloadKvFields_key_Delete {
+  permission: Boolean!
+}
+
+type PayloadKvFields_key_Read {
+  permission: Boolean!
+}
+
+type PayloadKvFields_key_Update {
+  permission: Boolean!
+}
+
+type PayloadKvReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PayloadKvUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+input PayloadKv_data_operator {
+  contains: JSON
+  equals: JSON
+  intersects: JSON
+  like: JSON
+  not_equals: JSON
+  within: JSON
+}
+
+input PayloadKv_id_operator {
+  all: [String]
+  contains: String
+  equals: String
+  exists: Boolean
+  in: [String]
+  like: String
+  not_equals: String
+  not_in: [String]
+}
+
+input PayloadKv_key_operator {
+  all: [String]
+  contains: String
+  equals: String
+  in: [String]
+  like: String
+  not_equals: String
+  not_in: [String]
+}
+
+input PayloadKv_where {
+  AND: [PayloadKv_where_and]
+  OR: [PayloadKv_where_or]
+  data: PayloadKv_data_operator
+  id: PayloadKv_id_operator
+  key: PayloadKv_key_operator
+}
+
+input PayloadKv_where_and {
+  AND: [PayloadKv_where_and]
+  OR: [PayloadKv_where_or]
+  data: PayloadKv_data_operator
+  id: PayloadKv_id_operator
+  key: PayloadKv_key_operator
+}
+
+input PayloadKv_where_or {
+  AND: [PayloadKv_where_and]
+  OR: [PayloadKv_where_or]
+  data: PayloadKv_data_operator
+  id: PayloadKv_id_operator
+  key: PayloadKv_key_operator
+}
+
+type PayloadKvs {
+  docs: [PayloadKv!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
+  nextPage: Int
+  offset: Int
+  page: Int!
+  pagingCounter: Int!
+  prevPage: Int
+  totalDocs: Int!
+  totalPages: Int!
 }
 
 type PayloadLockedDocument {
@@ -4236,7 +4473,7 @@ type PayloadLockedDocument {
   globalSlug: String
   id: String!
   updatedAt: DateTime
-  user: PayloadLockedDocument_User_Relationship!
+  user: PayloadLockedDocument_User_Relationship
 }
 
 input PayloadLockedDocumentUpdate_DocumentRelationshipInput {
@@ -4401,17 +4638,17 @@ input PayloadLockedDocument_where_or {
 }
 
 type PayloadLockedDocuments {
-  docs: [PayloadLockedDocument]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [PayloadLockedDocument!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
 }
 
 type PayloadLockedDocumentsCreateAccess {
@@ -4705,7 +4942,7 @@ type PayloadPreference {
   id: String!
   key: String
   updatedAt: DateTime
-  user: PayloadPreference_User_Relationship!
+  user: PayloadPreference_User_Relationship
   value: JSON
 }
 
@@ -4835,17 +5072,17 @@ input PayloadPreference_where_or {
 }
 
 type PayloadPreferences {
-  docs: [PayloadPreference]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [PayloadPreference!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
 }
 
 type PayloadPreferencesCreateAccess {
@@ -5136,34 +5373,38 @@ type PayloadPreferencesUpdateDocAccess {
 
 type Query {
   Access: Access
-  FooterMenu(draft: Boolean): FooterMenu
-  HeaderMenu(draft: Boolean): HeaderMenu
-  Media(draft: Boolean, id: String!): Media
-  Page(draft: Boolean, id: String!): Page
-  Pages(draft: Boolean, limit: Int, page: Int, pagination: Boolean, sort: String, where: Page_where): Pages
-  PayloadLockedDocument(draft: Boolean, id: String!): PayloadLockedDocument
-  PayloadLockedDocuments(draft: Boolean, limit: Int, page: Int, pagination: Boolean, sort: String, where: PayloadLockedDocument_where): PayloadLockedDocuments
-  PayloadPreference(draft: Boolean, id: String!): PayloadPreference
-  PayloadPreferences(draft: Boolean, limit: Int, page: Int, pagination: Boolean, sort: String, where: PayloadPreference_where): PayloadPreferences
-  User(draft: Boolean, id: String!): User
-  Users(draft: Boolean, limit: Int, page: Int, pagination: Boolean, sort: String, where: User_where): Users
-  allMedia(draft: Boolean, limit: Int, page: Int, pagination: Boolean, sort: String, where: Media_where): allMedia
-  countPages(draft: Boolean, where: Page_where): countPages
-  countPayloadLockedDocuments(draft: Boolean, where: PayloadLockedDocument_where): countPayloadLockedDocuments
-  countPayloadPreferences(draft: Boolean, where: PayloadPreference_where): countPayloadPreferences
-  countUsers(draft: Boolean, where: User_where): countUsers
-  countallMedia(draft: Boolean, where: Media_where): countallMedia
+  FooterMenu(draft: Boolean, select: Boolean): FooterMenu
+  HeaderMenu(draft: Boolean, select: Boolean): HeaderMenu
+  Media(draft: Boolean, id: String!, select: Boolean, trash: Boolean): Media
+  Page(draft: Boolean, id: String!, select: Boolean, trash: Boolean): Page
+  Pages(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: Page_where): Pages
+  PayloadKv(draft: Boolean, id: String!, select: Boolean, trash: Boolean): PayloadKv
+  PayloadKvs(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: PayloadKv_where): PayloadKvs
+  PayloadLockedDocument(draft: Boolean, id: String!, select: Boolean, trash: Boolean): PayloadLockedDocument
+  PayloadLockedDocuments(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: PayloadLockedDocument_where): PayloadLockedDocuments
+  PayloadPreference(draft: Boolean, id: String!, select: Boolean, trash: Boolean): PayloadPreference
+  PayloadPreferences(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: PayloadPreference_where): PayloadPreferences
+  User(draft: Boolean, id: String!, select: Boolean, trash: Boolean): User
+  Users(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: User_where): Users
+  allMedia(draft: Boolean, limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: Media_where): allMedia
+  countPages(draft: Boolean, trash: Boolean, where: Page_where): countPages
+  countPayloadKvs(draft: Boolean, trash: Boolean, where: PayloadKv_where): countPayloadKvs
+  countPayloadLockedDocuments(draft: Boolean, trash: Boolean, where: PayloadLockedDocument_where): countPayloadLockedDocuments
+  countPayloadPreferences(draft: Boolean, trash: Boolean, where: PayloadPreference_where): countPayloadPreferences
+  countUsers(draft: Boolean, trash: Boolean, where: User_where): countUsers
+  countallMedia(draft: Boolean, trash: Boolean, where: Media_where): countallMedia
   docAccessFooterMenu: footer_menuDocAccess
   docAccessHeaderMenu: header_menuDocAccess
   docAccessMedia(id: String!): mediaDocAccess
   docAccessPage(id: String!): pageDocAccess
+  docAccessPayloadKv(id: String!): payload_kvDocAccess
   docAccessPayloadLockedDocument(id: String!): payload_locked_documentsDocAccess
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
   docAccessUser(id: String!): userDocAccess
   initializedUser: Boolean
   meUser: userMe
-  versionPage(id: String): PageVersion
-  versionsPages(limit: Int, page: Int, pagination: Boolean, sort: String, where: versionsPage_where): versionsPages
+  versionPage(id: String, trash: Boolean): PageVersion
+  versionsPages(limit: Int, page: Int, pagination: Boolean, select: Boolean, sort: String, trash: Boolean, where: versionsPage_where): versionsPages
 }
 
 type User {
@@ -5176,6 +5417,7 @@ type User {
   resetPasswordExpiration: DateTime
   resetPasswordToken: String
   salt: String
+  sessions: [User_Sessions!]
   updatedAt: DateTime
 }
 
@@ -5202,6 +5444,7 @@ type UserDeleteDocAccess {
 type UserDocAccessFields {
   createdAt: UserDocAccessFields_createdAt
   email: UserDocAccessFields_email
+  sessions: UserDocAccessFields_sessions
   updatedAt: UserDocAccessFields_updatedAt
 }
 
@@ -5251,6 +5494,105 @@ type UserDocAccessFields_email_Update {
   permission: Boolean!
 }
 
+type UserDocAccessFields_sessions {
+  create: UserDocAccessFields_sessions_Create
+  delete: UserDocAccessFields_sessions_Delete
+  fields: UserDocAccessFields_sessions_Fields
+  read: UserDocAccessFields_sessions_Read
+  update: UserDocAccessFields_sessions_Update
+}
+
+type UserDocAccessFields_sessions_Create {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_Delete {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_Fields {
+  createdAt: UserDocAccessFields_sessions_createdAt
+  expiresAt: UserDocAccessFields_sessions_expiresAt
+  id: UserDocAccessFields_sessions_id
+}
+
+type UserDocAccessFields_sessions_Read {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_Update {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_createdAt {
+  create: UserDocAccessFields_sessions_createdAt_Create
+  delete: UserDocAccessFields_sessions_createdAt_Delete
+  read: UserDocAccessFields_sessions_createdAt_Read
+  update: UserDocAccessFields_sessions_createdAt_Update
+}
+
+type UserDocAccessFields_sessions_createdAt_Create {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_createdAt_Delete {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_createdAt_Read {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_createdAt_Update {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_expiresAt {
+  create: UserDocAccessFields_sessions_expiresAt_Create
+  delete: UserDocAccessFields_sessions_expiresAt_Delete
+  read: UserDocAccessFields_sessions_expiresAt_Read
+  update: UserDocAccessFields_sessions_expiresAt_Update
+}
+
+type UserDocAccessFields_sessions_expiresAt_Create {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_expiresAt_Delete {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_expiresAt_Read {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_expiresAt_Update {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_id {
+  create: UserDocAccessFields_sessions_id_Create
+  delete: UserDocAccessFields_sessions_id_Delete
+  read: UserDocAccessFields_sessions_id_Read
+  update: UserDocAccessFields_sessions_id_Update
+}
+
+type UserDocAccessFields_sessions_id_Create {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_id_Delete {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_id_Read {
+  permission: Boolean!
+}
+
+type UserDocAccessFields_sessions_id_Update {
+  permission: Boolean!
+}
+
 type UserDocAccessFields_updatedAt {
   create: UserDocAccessFields_updatedAt_Create
   delete: UserDocAccessFields_updatedAt_Delete
@@ -5277,6 +5619,7 @@ type UserDocAccessFields_updatedAt_Update {
 type UserFields {
   createdAt: UserFields_createdAt
   email: UserFields_email
+  sessions: UserFields_sessions
   updatedAt: UserFields_updatedAt
 }
 
@@ -5323,6 +5666,105 @@ type UserFields_email_Read {
 }
 
 type UserFields_email_Update {
+  permission: Boolean!
+}
+
+type UserFields_sessions {
+  create: UserFields_sessions_Create
+  delete: UserFields_sessions_Delete
+  fields: UserFields_sessions_Fields
+  read: UserFields_sessions_Read
+  update: UserFields_sessions_Update
+}
+
+type UserFields_sessions_Create {
+  permission: Boolean!
+}
+
+type UserFields_sessions_Delete {
+  permission: Boolean!
+}
+
+type UserFields_sessions_Fields {
+  createdAt: UserFields_sessions_createdAt
+  expiresAt: UserFields_sessions_expiresAt
+  id: UserFields_sessions_id
+}
+
+type UserFields_sessions_Read {
+  permission: Boolean!
+}
+
+type UserFields_sessions_Update {
+  permission: Boolean!
+}
+
+type UserFields_sessions_createdAt {
+  create: UserFields_sessions_createdAt_Create
+  delete: UserFields_sessions_createdAt_Delete
+  read: UserFields_sessions_createdAt_Read
+  update: UserFields_sessions_createdAt_Update
+}
+
+type UserFields_sessions_createdAt_Create {
+  permission: Boolean!
+}
+
+type UserFields_sessions_createdAt_Delete {
+  permission: Boolean!
+}
+
+type UserFields_sessions_createdAt_Read {
+  permission: Boolean!
+}
+
+type UserFields_sessions_createdAt_Update {
+  permission: Boolean!
+}
+
+type UserFields_sessions_expiresAt {
+  create: UserFields_sessions_expiresAt_Create
+  delete: UserFields_sessions_expiresAt_Delete
+  read: UserFields_sessions_expiresAt_Read
+  update: UserFields_sessions_expiresAt_Update
+}
+
+type UserFields_sessions_expiresAt_Create {
+  permission: Boolean!
+}
+
+type UserFields_sessions_expiresAt_Delete {
+  permission: Boolean!
+}
+
+type UserFields_sessions_expiresAt_Read {
+  permission: Boolean!
+}
+
+type UserFields_sessions_expiresAt_Update {
+  permission: Boolean!
+}
+
+type UserFields_sessions_id {
+  create: UserFields_sessions_id_Create
+  delete: UserFields_sessions_id_Delete
+  read: UserFields_sessions_id_Read
+  update: UserFields_sessions_id_Update
+}
+
+type UserFields_sessions_id_Create {
+  permission: Boolean!
+}
+
+type UserFields_sessions_id_Delete {
+  permission: Boolean!
+}
+
+type UserFields_sessions_id_Read {
+  permission: Boolean!
+}
+
+type UserFields_sessions_id_Update {
   permission: Boolean!
 }
 
@@ -5379,6 +5821,12 @@ type UserUpdateDocAccess {
   where: JSONObject
 }
 
+type User_Sessions {
+  createdAt: DateTime
+  expiresAt: DateTime
+  id: String
+}
+
 input User_createdAt_operator {
   equals: DateTime
   exists: Boolean
@@ -5411,6 +5859,37 @@ input User_id_operator {
   not_in: [String]
 }
 
+input User_sessions__createdAt_operator {
+  equals: DateTime
+  exists: Boolean
+  greater_than: DateTime
+  greater_than_equal: DateTime
+  less_than: DateTime
+  less_than_equal: DateTime
+  like: DateTime
+  not_equals: DateTime
+}
+
+input User_sessions__expiresAt_operator {
+  equals: DateTime
+  greater_than: DateTime
+  greater_than_equal: DateTime
+  less_than: DateTime
+  less_than_equal: DateTime
+  like: DateTime
+  not_equals: DateTime
+}
+
+input User_sessions__id_operator {
+  all: [String]
+  contains: String
+  equals: String
+  in: [String]
+  like: String
+  not_equals: String
+  not_in: [String]
+}
+
 input User_updatedAt_operator {
   equals: DateTime
   exists: Boolean
@@ -5428,6 +5907,9 @@ input User_where {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  sessions__createdAt: User_sessions__createdAt_operator
+  sessions__expiresAt: User_sessions__expiresAt_operator
+  sessions__id: User_sessions__id_operator
   updatedAt: User_updatedAt_operator
 }
 
@@ -5437,6 +5919,9 @@ input User_where_and {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  sessions__createdAt: User_sessions__createdAt_operator
+  sessions__expiresAt: User_sessions__expiresAt_operator
+  sessions__id: User_sessions__id_operator
   updatedAt: User_updatedAt_operator
 }
 
@@ -5446,38 +5931,45 @@ input User_where_or {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  sessions__createdAt: User_sessions__createdAt_operator
+  sessions__expiresAt: User_sessions__expiresAt_operator
+  sessions__id: User_sessions__id_operator
   updatedAt: User_updatedAt_operator
 }
 
 type Users {
-  docs: [User]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [User!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
 }
 
 type allMedia {
-  docs: [Media]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [Media!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
 }
 
 type countPages {
+  totalDocs: Int
+}
+
+type countPayloadKvs {
   totalDocs: Int
 }
 
@@ -5719,6 +6211,16 @@ input mutationPage_MetaInput {
   title: String
 }
 
+input mutationPayloadKvInput {
+  data: JSON!
+  key: String!
+}
+
+input mutationPayloadKvUpdateInput {
+  data: JSON
+  key: String
+}
+
 input mutationPayloadLockedDocumentInput {
   createdAt: String
   document: PayloadLockedDocument_DocumentRelationshipInput
@@ -5761,6 +6263,7 @@ input mutationUserInput {
   resetPasswordExpiration: String
   resetPasswordToken: String
   salt: String
+  sessions: [mutationUser_SessionsInput]
   updatedAt: String
 }
 
@@ -5774,7 +6277,20 @@ input mutationUserUpdateInput {
   resetPasswordExpiration: String
   resetPasswordToken: String
   salt: String
+  sessions: [mutationUserUpdate_SessionsInput]
   updatedAt: String
+}
+
+input mutationUserUpdate_SessionsInput {
+  createdAt: String
+  expiresAt: String!
+  id: String!
+}
+
+input mutationUser_SessionsInput {
+  createdAt: String
+  expiresAt: String!
+  id: String!
 }
 
 type pageAccess {
@@ -5793,6 +6309,22 @@ type pageDocAccess {
   read: PageReadDocAccess
   readVersions: PageReadVersionsDocAccess
   update: PageUpdateDocAccess
+}
+
+type payload_kvAccess {
+  create: PayloadKvCreateAccess
+  delete: PayloadKvDeleteAccess
+  fields: PayloadKvFields
+  read: PayloadKvReadAccess
+  update: PayloadKvUpdateAccess
+}
+
+type payload_kvDocAccess {
+  create: PayloadKvCreateDocAccess
+  delete: PayloadKvDeleteDocAccess
+  fields: PayloadKvDocAccessFields
+  read: PayloadKvReadDocAccess
+  update: PayloadKvUpdateDocAccess
 }
 
 type payload_locked_documentsAccess {
@@ -5887,28 +6419,6 @@ input versionsPage_createdAt_operator {
   not_equals: DateTime
 }
 
-input versionsPage_header__image_operator {
-  all: [JSON]
-  equals: JSON
-  exists: Boolean
-  in: [JSON]
-  not_equals: JSON
-  not_in: [JSON]
-}
-
-enum versionsPage_header__type_Input {
-  default
-  featuredImage
-}
-
-input versionsPage_header__type_operator {
-  all: [versionsPage_header__type_Input]
-  equals: versionsPage_header__type_Input
-  in: [versionsPage_header__type_Input]
-  not_equals: versionsPage_header__type_Input
-  not_in: [versionsPage_header__type_Input]
-}
-
 input versionsPage_id_operator {
   all: [String]
   contains: String
@@ -5977,6 +6487,28 @@ input versionsPage_version__description_operator {
   exists: Boolean
   like: JSON
   not_equals: JSON
+}
+
+input versionsPage_version__header__image_operator {
+  all: [JSON]
+  equals: JSON
+  exists: Boolean
+  in: [JSON]
+  not_equals: JSON
+  not_in: [JSON]
+}
+
+enum versionsPage_version__header__type_Input {
+  default
+  featuredImage
+}
+
+input versionsPage_version__header__type_operator {
+  all: [versionsPage_version__header__type_Input]
+  equals: versionsPage_version__header__type_Input
+  in: [versionsPage_version__header__type_Input]
+  not_equals: versionsPage_version__header__type_Input
+  not_in: [versionsPage_version__header__type_Input]
 }
 
 input versionsPage_version__isPlaceholder_operator {
@@ -6055,8 +6587,6 @@ input versionsPage_where {
   AND: [versionsPage_where_and]
   OR: [versionsPage_where_or]
   createdAt: versionsPage_createdAt_operator
-  header__image: versionsPage_header__image_operator
-  header__type: versionsPage_header__type_operator
   id: versionsPage_id_operator
   latest: versionsPage_latest_operator
   parent: versionsPage_parent_operator
@@ -6064,6 +6594,8 @@ input versionsPage_where {
   version___status: versionsPage_version___status_operator
   version__createdAt: versionsPage_version__createdAt_operator
   version__description: versionsPage_version__description_operator
+  version__header__image: versionsPage_version__header__image_operator
+  version__header__type: versionsPage_version__header__type_operator
   version__isPlaceholder: versionsPage_version__isPlaceholder_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -6078,8 +6610,6 @@ input versionsPage_where_and {
   AND: [versionsPage_where_and]
   OR: [versionsPage_where_or]
   createdAt: versionsPage_createdAt_operator
-  header__image: versionsPage_header__image_operator
-  header__type: versionsPage_header__type_operator
   id: versionsPage_id_operator
   latest: versionsPage_latest_operator
   parent: versionsPage_parent_operator
@@ -6087,6 +6617,8 @@ input versionsPage_where_and {
   version___status: versionsPage_version___status_operator
   version__createdAt: versionsPage_version__createdAt_operator
   version__description: versionsPage_version__description_operator
+  version__header__image: versionsPage_version__header__image_operator
+  version__header__type: versionsPage_version__header__type_operator
   version__isPlaceholder: versionsPage_version__isPlaceholder_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -6101,8 +6633,6 @@ input versionsPage_where_or {
   AND: [versionsPage_where_and]
   OR: [versionsPage_where_or]
   createdAt: versionsPage_createdAt_operator
-  header__image: versionsPage_header__image_operator
-  header__type: versionsPage_header__type_operator
   id: versionsPage_id_operator
   latest: versionsPage_latest_operator
   parent: versionsPage_parent_operator
@@ -6110,6 +6640,8 @@ input versionsPage_where_or {
   version___status: versionsPage_version___status_operator
   version__createdAt: versionsPage_version__createdAt_operator
   version__description: versionsPage_version__description_operator
+  version__header__image: versionsPage_version__header__image_operator
+  version__header__type: versionsPage_version__header__type_operator
   version__isPlaceholder: versionsPage_version__isPlaceholder_operator
   version__meta__description: versionsPage_version__meta__description_operator
   version__meta__image: versionsPage_version__meta__image_operator
@@ -6121,15 +6653,15 @@ input versionsPage_where_or {
 }
 
 type versionsPages {
-  docs: [PageVersion]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
+  docs: [PageVersion!]!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  limit: Int!
   nextPage: Int
   offset: Int
-  page: Int
-  pagingCounter: Int
+  page: Int!
+  pagingCounter: Int!
   prevPage: Int
-  totalDocs: Int
-  totalPages: Int
+  totalDocs: Int!
+  totalPages: Int!
 }

@@ -10,9 +10,6 @@ const nextConfig: NextConfig = {
 		],
 	},
 	output: 'standalone',
-	publicRuntimeConfig: {
-		SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
-	},
 	rewrites: async () => [
 		{
 			destination: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/media/:path*`,

@@ -4,26 +4,35 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const config: CodegenConfig = {
-	documents: './src/graphql/**/*.graphql',
 	generates: {
-		'src/graphql/generated/schema.ts': {
-			plugins: [
-				'typescript',
-				'typescript-operations',
-			],
-		},
 		'src/graphql/generated/': {
+			documents: './src/graphql/**/*.graphql',
 			preset: 'client',
-			plugins: [],
 			presetConfig: {
 				gqlTagName: 'gql',
+				fragmentMasking: false,
+			},
+			schema: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`,
+		},
+		'src/graphql/generated/schema.ts': {
+			plugins: ['typescript'],
+			schema: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`,
+			config: {
+				scalars: {
+					Date: 'string',
+					DateTime: 'string',
+					EmailAddress: 'string',
+					JSON: 'import("lexical").SerializedEditorState<import("lexical").SerializedLexicalNode>',
+					JSONObject: 'Record<string, unknown>',
+				},
 			},
 		},
 		'src/graphql/generated/schema.graphql': {
 			plugins: ['schema-ast'],
+			schema: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`,
 		},
 	},
 	overwrite: true,
-	schema: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`,
 };
+
 export default config;

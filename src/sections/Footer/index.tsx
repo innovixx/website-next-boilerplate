@@ -1,6 +1,6 @@
 import React from 'react';
 import { cmsClient } from '../../graphql';
-import { type FooterMenuQuery, type FooterMenuQueryVariables } from '../../graphql/generated/schema';
+import { type FooterMenuQuery, type FooterMenuQueryVariables } from '../../graphql/generated/graphql';
 import { FooterMenu } from './components';
 import { FooterMenuDocument } from '../../graphql/generated/graphql';
 

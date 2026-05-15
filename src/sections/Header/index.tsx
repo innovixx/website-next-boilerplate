@@ -1,6 +1,6 @@
 import React from 'react';
 import { cmsClient } from '../../graphql';
-import { type HeaderMenuQuery, type HeaderMenuQueryVariables } from '../../graphql/generated/schema';
+import { type HeaderMenuQuery, type HeaderMenuQueryVariables } from '../../graphql/generated/graphql';
 import { HeaderMenu } from './components';
 import { HeaderMenuDocument } from '../../graphql/generated/graphql';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FooterMenuQuery } from '../../../../graphql/generated/schema';
+import type { FooterMenuQuery } from '../../../../graphql/generated/graphql';
 import type { AppLinkProps } from '../../../../components';
 import { AppLink, Container } from '../../../../components';
 import styles from './styles.module.scss';

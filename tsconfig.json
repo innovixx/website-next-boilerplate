@@ -34,12 +34,6 @@
       "src/types/styles"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "./src/graphql/generated/schema.ts",
-    "src/components/RichText/nodeFormat.ts",
-    "src/components/RichText/serialize.tsx"
-  ],
   "include": [
     "**/*.d.ts",
     "**/*.scss.d.ts",
@@ -49,5 +43,11 @@
     "stylelint.config.mjs",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ]
+  ],
+  "exclude": [
+    "node_modules",
+    "./src/graphql/generated/**/*",
+    "src/components/RichText/nodeFormat.ts",
+    "src/components/RichText/serialize.tsx"
+  ],
 }

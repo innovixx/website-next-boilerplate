@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	images: {
+		qualities: [100, 75],
 		remotePatterns: [
 			{
 				protocol: new URL(`${process.env.NEXT_PUBLIC_SERVER_URL}`).protocol.slice(0, -1) as 'http' | 'https',

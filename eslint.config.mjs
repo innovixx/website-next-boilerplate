@@ -14,7 +14,7 @@ export default [
 	},
 	{
 		ignores: [
-			'src/graphql/generated',
+			'./src/graphql/generated/**/*',
 			'codegen.ts',
 			'graphql.config.ts',
 			'schema.graphql',

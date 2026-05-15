@@ -1,13 +1,15 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
 import { cmsClient } from '../../../graphql';
-import { type PagesQuery, type PagesQueryVariables } from '../../../graphql/generated/schema';
+import { type PagesQuery, type PagesQueryVariables } from '../../../graphql/generated/graphql';
 import { RefreshRouteOnSave, RenderBlocks } from '../../../components';
 import { PageHeader } from '../../../sections';
 import type { GenerateMetaArgs } from '../../../utils/generateMeta';
 import { generateMeta } from '../../../utils/generateMeta';
 import { PagesDocument } from '../../../graphql/generated/graphql';
+import type { Page_Header } from '../../../graphql/generated/schema';
 
 interface Props {
 	params: Promise<Record<string, string>>
@@ -48,9 +50,9 @@ const Page = async ({ params, searchParams }: Props): Promise<React.ReactElement
 	return (
 		<div>
 			<PageHeader
-				header={page.header ?? {}}
+				header={page.header as Page_Header}
 				title={page.title ?? ''}
-				description={page.description}
+				description={page.description as SerializedEditorState<SerializedLexicalNode>}
 			/>
 			<RenderBlocks
 				blocks={page.layout?.blocks ?? []}

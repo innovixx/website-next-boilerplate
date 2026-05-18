@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"pnpm watch:generate-types:styles\" \"next dev --webpack\" --hide=0",
-    "build": "next build",
+    "build": "next build --webpack",
     "serve": "next start",
     "codegen": "cross-env TS_NODE_PROJECT=tsconfig.codegen.json graphql-codegen --config codegen.ts",
     "generate-types:styles": "typed-scss-modules src --outputFolder src/types/styles",

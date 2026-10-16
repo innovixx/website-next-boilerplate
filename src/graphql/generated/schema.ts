@@ -9,7 +9,7 @@ export type Scalars = {
   Float: { input: number; output: number; }
   DateTime: { input: string; output: string; }
   EmailAddress: { input: string; output: string; }
-  JSON: { input: import("lexical").SerializedEditorState<import("lexical").SerializedLexicalNode>; output: import("lexical").SerializedEditorState<import("lexical").SerializedLexicalNode>; }
+  JSON: { input: import("lexical").SerializedEditorState; output: import("lexical").SerializedEditorState; }
   JSONObject: { input: Record<string, unknown>; output: Record<string, unknown>; }
 };
 
@@ -6760,6 +6760,7 @@ export type User = {
   lockUntil?: Maybe<Scalars['DateTime']['output']>;
   loginAttempts?: Maybe<Scalars['Float']['output']>;
   resetPasswordExpiration?: Maybe<Scalars['DateTime']['output']>;
+  resetPasswordRequestedAt?: Maybe<Scalars['DateTime']['output']>;
   resetPasswordToken?: Maybe<Scalars['String']['output']>;
   salt?: Maybe<Scalars['String']['output']>;
   sessions?: Maybe<Array<User_Sessions>>;
@@ -7705,6 +7706,7 @@ export type MutationUserInput = {
   loginAttempts?: InputMaybe<Scalars['Float']['input']>;
   password: Scalars['String']['input'];
   resetPasswordExpiration?: InputMaybe<Scalars['String']['input']>;
+  resetPasswordRequestedAt?: InputMaybe<Scalars['String']['input']>;
   resetPasswordToken?: InputMaybe<Scalars['String']['input']>;
   salt?: InputMaybe<Scalars['String']['input']>;
   sessions?: InputMaybe<Array<InputMaybe<MutationUser_SessionsInput>>>;
@@ -7719,6 +7721,7 @@ export type MutationUserUpdateInput = {
   loginAttempts?: InputMaybe<Scalars['Float']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
   resetPasswordExpiration?: InputMaybe<Scalars['String']['input']>;
+  resetPasswordRequestedAt?: InputMaybe<Scalars['String']['input']>;
   resetPasswordToken?: InputMaybe<Scalars['String']['input']>;
   salt?: InputMaybe<Scalars['String']['input']>;
   sessions?: InputMaybe<Array<InputMaybe<MutationUserUpdate_SessionsInput>>>;

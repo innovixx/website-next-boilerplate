@@ -5415,6 +5415,7 @@ type User {
   lockUntil: DateTime
   loginAttempts: Float
   resetPasswordExpiration: DateTime
+  resetPasswordRequestedAt: DateTime
   resetPasswordToken: String
   salt: String
   sessions: [User_Sessions!]
@@ -6261,6 +6262,7 @@ input mutationUserInput {
   loginAttempts: Float
   password: String!
   resetPasswordExpiration: String
+  resetPasswordRequestedAt: String
   resetPasswordToken: String
   salt: String
   sessions: [mutationUser_SessionsInput]
@@ -6275,6 +6277,7 @@ input mutationUserUpdateInput {
   loginAttempts: Float
   password: String
   resetPasswordExpiration: String
+  resetPasswordRequestedAt: String
   resetPasswordToken: String
   salt: String
   sessions: [mutationUserUpdate_SessionsInput]

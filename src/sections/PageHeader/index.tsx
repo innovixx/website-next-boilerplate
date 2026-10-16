@@ -1,11 +1,11 @@
 import React from 'react';
-import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
+import type { SerializedEditorState } from 'lexical';
 import type { Page_Header } from '../../graphql/generated/schema';
 import { DefaultHeader, FeaturedImageHeader } from './components';
 
 interface Props {
 	header: Page_Header;
-	description: SerializedEditorState<SerializedLexicalNode>;
+	description: SerializedEditorState;
 	title: string;
 }
 

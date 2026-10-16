@@ -1,9 +1,9 @@
 import React from 'react';
-import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
+import type { SerializedEditorState } from 'lexical';
 import { Container, RichText } from '../../../../components';
 
 interface Props {
-	description: SerializedEditorState<SerializedLexicalNode>;
+	description: SerializedEditorState;
 	title: string;
 }
 

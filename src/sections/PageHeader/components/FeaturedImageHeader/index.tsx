@@ -1,13 +1,13 @@
 import { Cell, Grid } from '@faceless-ui/css-grid';
 import React from 'react';
-import type { SerializedEditorState, SerializedLexicalNode } from 'lexical';
+import type { SerializedEditorState } from 'lexical';
 import type { Page_Header } from '../../../../graphql/generated/schema';
 import { AppImage, Container, RichText } from '../../../../components';
 import styles from './styles.module.scss';
 
 interface Props {
 	header: Page_Header;
-	description: SerializedEditorState<SerializedLexicalNode>;
+	description: SerializedEditorState;
 	title: string;
 }
 

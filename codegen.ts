@@ -22,7 +22,7 @@ const config: CodegenConfig = {
 					Date: 'string',
 					DateTime: 'string',
 					EmailAddress: 'string',
-					JSON: 'import("lexical").SerializedEditorState<import("lexical").SerializedLexicalNode>',
+					JSON: 'import("lexical").SerializedEditorState',
 					JSONObject: 'Record<string, unknown>',
 				},
 			},

@@ -1,17 +1,13 @@
-
-/* eslint-disable import/no-unresolved */
 import baseConfig from '@innovixx/eslint-config/config/configs/base/index.mjs';
 import reactConfig from '@innovixx/eslint-config/config/configs/react/index.mjs';
 import typescriptConfig from '@innovixx/eslint-config/config/configs/typescript/index.mjs';
-import graphqlPlugin from '@graphql-eslint/eslint-plugin';
+import { graphqlConfig } from '@innovixx/eslint-config/config/configs/graphql/index.mjs';
 
 export default [
 	baseConfig,
 	reactConfig,
-	{
-		...typescriptConfig,
-		files: ['**/*.{ts,tsx}'],
-	},
+	typescriptConfig,
+	...graphqlConfig,
 	{
 		ignores: [
 			'./src/graphql/generated/**/*',
@@ -24,38 +20,7 @@ export default [
 		files: ['**/*.{js,jsx,ts,tsx}'],
 		rules: {
 			camelcase: 'off',
-		},
-	},
-	{
-		files: ['**/*.graphql'],
-		languageOptions: {
-			parser: graphqlPlugin.parser,
-		},
-		ignores: [
-			'**/node_modules/**',
-			'src/graphql/generated/schema.graphql',
-		],
-		plugins: {
-			'@graphql-eslint': graphqlPlugin,
-		},
-		rules: {
-			'eol-last': 'warn',
-			'@graphql-eslint/no-anonymous-operations': 'warn',
-			'@graphql-eslint/no-duplicate-fields': 'warn',
-			'@graphql-eslint/known-type-names': 'error',
-			'@graphql-eslint/naming-convention': [
-				'warn',
-				{
-					OperationDefinition: {
-						style: 'PascalCase',
-						forbiddenPrefixes: ['Query', 'Mutation', 'Subscription', 'Get'],
-						forbiddenSuffixes: ['Query', 'Mutation', 'Subscription'],
-					},
-					ObjectTypeDefinition: {
-						style: 'PascalCase',
-					},
-				},
-			],
+			'import-x/no-cycle': 'off'
 		},
 	},
 ];

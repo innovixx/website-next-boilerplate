@@ -12,7 +12,6 @@ import React, {
 	useState,
 } from 'react';
 import { Container } from '../../components/layouts';
-import zIndex from '../../styles/zIndex/index.module.scss';
 
 interface Props {
 	children: React.ReactNode;

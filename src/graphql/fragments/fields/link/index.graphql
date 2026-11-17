@@ -3,6 +3,7 @@ fragment LinkFieldFragment on Link {
 	reference {
 		value {
 			... on Page {
+				id
 				title
 				slug
 			}
